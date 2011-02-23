@@ -1,0 +1,18 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+  <ul class="actions">
+    <li><a href="<%=edit_project_actor_path(@project,@actor)%>" class="button large black"><span>Edit Actor</span></a></li>
+    <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_actor_path(@project,@actor)%>" class="button red"><span>Delete Actor</span></a></li>
+   </ul>
+</div>
+<% end %>
+<div class="simple-list-heading">
+<h1><%=@actor.name%></h1>
+<div class="sub">
+  <%=@actor.description%>
+</div>
+</div>
+
+<ul id="stories">
+    <%=render :partial => "stories/story", :collection => @actor.stories%>
+</ul>

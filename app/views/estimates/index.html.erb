@@ -1,0 +1,10 @@
+<% content_for(:sidebar) do %>
+<a href="<%= new_project_estimate_path(@project) %>" class="button large action"><span>New Estimate</span></a>
+<% end %>
+<ul class="simple-list">
+  <% @estimates.each do |estimate| %>
+    <li>
+      <%= link_to "#{estimate.name} - Min #{estimate.min_hours_total} / Max #{estimate.max_hours_total}", project_estimate_path(@project, estimate), :id => "view_estimate_#{estimate.id}" %>
+    </li>
+  <% end %>
+</ul>

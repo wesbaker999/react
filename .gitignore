@@ -1,0 +1,10 @@
+.DS_Store
+config/database.yml
+config/aws_access_key_id.txt
+config/aws_secret_access_key.txt
+config/csrf_secret_token.txt
+.idea
+db/*.sqlite3
+log/*.log
+tmp/**/*
+vendor/bundle

@@ -1,0 +1,14 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+  <ul class="actions">
+    <li><a href="<%=edit_project_glossary_term_path(@project,@term)%>" class="button large black"><span>Edit Term</span></a></li>
+    <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_glossary_term_path(@project,@term)%>" class="button red"><span>Delete Term</span></a></li>
+   </ul>
+</div>
+<% end %>
+<div class="inner">
+<h1><%=@term.name%></h1>
+<p>
+  <%=@term.definition %>
+</p>
+</div>

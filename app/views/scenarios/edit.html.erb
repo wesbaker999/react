@@ -1,0 +1,12 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+<a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_story_scenario_path(@project, @story, @scenario)%>" class="button red"><span>Delete Scenario</span></a>
+</div>
+<% end %>
+<div class="inner">
+  <h1>#<%=@story.project_story_id%>.<%=@scenario.story_scenario_id%>: <%=@scenario.title%></h1>
+<%=form_for @scenario, :url => project_story_scenario_path(@project, @story, @scenario), :method=>:put do |f|%>
+<%=render :partial => "fields", :locals => {:f =>f}%>
+    <%=f.submit "Update", :class=>"button"%>
+<% end %>
+</div>

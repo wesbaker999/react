@@ -1,0 +1,44 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+<div class="sign_in">
+  <h1>Sign in</h1>
+<%= form_for @user_session do |f| %>
+   <div class="field">
+      <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  </div>
+  <%= f.submit "Sign in", :class=>"button black" %>
+
+<% end %>
+</div>
+<div class="sign_up">
+ <h1>Sign up</h1>
+<%= form_for @user, :url => users_path do |f|%>
+      <div class="field">
+  <%=f.label :name%>
+  <%=f.text_field :name%>
+        </div>
+      <div class="field">
+  <%=f.label :email%>
+  <%=f.text_field :email%>
+        </div>
+      <div class="field">
+  <%=f.label :password %>
+  <%=f.password_field :password %>
+        </div>
+      <div class="field">
+  <%=f.label :password_confirmation %>
+  <%=f.password_field :password_confirmation %>
+        </div>
+  <%=f.submit "Sign up", :class => "button black" %>
+<%end%>
+  </div>
+</div>
+<% end %>
+<div class="inner">
+  <h1>Rethinking Requirements.</h1>
+</div>

@@ -1,0 +1,11 @@
+<div class="inner">
+<h1>Settings</h1>
+<%=form_for(@project) do |f|%>
+<%=errors_for @project %>
+    <div class="field">
+   <%=f.label :name%>
+    <%=f.text_field :name %>
+      </div>
+    <%=f.submit "Update", :class => "button" %>
+<% end %>
+</div>

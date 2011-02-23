@@ -1,0 +1,76 @@
+<% content_for(:sidebar) do %>
+<a href="<%= new_project_story_scenario_path(@project, @story) %>" class="button large action"><span>New Scenario</span></a>
+
+<div class="inner">
+    <ul class="actions">
+        <li><a href="<%=edit_project_story_path(@project,@story)%>" class="button large black"><span>Edit Story</span></a></li>
+        <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_story_path(@project,@story)%>" class="button red"><span>Delete Story</span></a></li>
+    </ul>
+<% if @story.updated_by %>
+    <div>
+      Last updated by:<br/>
+      <%=@story.updated_by.name%><br/>
+      <%=@story.updated_at.to_s(:day_time)%>
+    </div>
+<% end %>
+</div>
+<% end %>
+<div class="story inner">
+<h1>#<%=@story.project_story_id%>: <%=@story.title%></h1>
+<div class="description">
+  <div class="as_a"><%=as_a_or_an(@story.actor.name)%> <%=link_to @story.actor.name, project_actor_path(@project,@story.actor)%></div>
+  <%=simple_format(link_story_terms(@story))%>
+</div>
+
+
+<% if @story.scenarios.count > 0 %>
+  <div id="scenarios">
+  <% @story.scenarios.each do |scenario| %>
+      <div class="scenario">
+        <h2><a href="<%= edit_project_story_scenario_path(@project, @story, scenario)%>">#<%= @story.project_story_id %>.<%= scenario.story_scenario_id %>: <%= scenario.title %></a></h2>
+        <div class="description"><%= simple_format(link_story_terms_by_string(scenario.description, @project)) %></div>
+      </div>
+  <% end %>
+  </div>
+<% end %>
+  <div class="signatures">
+
+
+    <div class="developer signature">
+      <div class="ink">
+    <% if @story.developer_signature %>
+    <h2><%=@story.developer_signature.user.name%></h2>
+    <%else%>
+        <% if @membership.developer %>
+        <%=button_to "Sign off as Developer", developer_sign_project_story_path(@project, @story), :method => :put, :class => "button large"%>
+        <% end %>
+    <% end %>
+      </div>
+      <div class="byline">Developer<% if @story.developer_signature %><div><%=@story.developer_signature.created_at.to_s(:day_time)%></div><% end %></div>
+    </div>
+
+        <div class="client signature">
+      <div class="ink">
+    <% if @story.client_signature %>
+    <h2><%=@story.client_signature.user.name%></h2>
+    <%else%>
+        <% if @membership.client %>
+            <%=button_to "Sign off as Client", client_sign_project_story_path(@project, @story), :method => :put, :class => "button large"%>
+        <% end %>
+    <% end %>
+        </div>
+      <div class="byline">Client<% if @story.client_signature %><div><%=@story.client_signature.created_at.to_s(:day_time)%></div><% end %></div>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+
+</div>
+<% content_for(:bottom_content) do %>
+    <ul id="comments">
+      <%= render :partial => "comment", :collection => @story.comments.latest %>
+    </ul>
+    <%= form_for :comment, :url => comment_project_story_path(@project, @story), :html => {:id => "new_comment"} do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit "Post Comment", :class => "button " %>
+    <% end %>
+<% end %>

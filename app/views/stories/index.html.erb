@@ -1,0 +1,18 @@
+<%content_for(:sidebar) do %>
+<a href="<%=new_project_story_path(@project)%>" class="button large action"><span>New Story</span></a>
+<%=render :partial => "projects/tabs"%>
+<% end %>
+<div id="story_bar">
+<% form_tag project_stories_path(@project), :id => "story_bar_search", :method => :get, :remote => true do %>
+  <div class="sort"><a class="<%=@sort%>"></a></div>
+  <div class="search">
+    <input type="text" name="q" id="q" value="" autocomplete="off" />
+  </div>
+  <div class="unsigned"><a class="<%=@unsigned%>">Unsigned (<%=@unsigned_count%>)</a></div>
+  <input type="hidden" name="sort" id="sort" value="<%=@sort%>"/>
+  <input type="hidden" name="unsigned" id="unsigned" value="<%=@unsigned%>"/>
+<% end %>
+</div>
+<ul id="stories">
+  <%=render :partial => "story", :collection => @stories%>
+</ul>

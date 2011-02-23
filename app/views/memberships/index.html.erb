@@ -1,0 +1,65 @@
+<%content_for(:sidebar) do %>
+<a href="<%=new_project_invitation_path(@project)%>" class="button large action"><span>New Member</span></a>
+<% end %>
+
+<div class="inner">
+
+    <h1>Memberships</h1>
+
+
+
+  <%= form_for @project, :url => project_memberships_path(@project), :method => :put do |f|%>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Admin?</th>
+        <th>Developer?</th>
+        <th>Client?</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+    <%= f.fields_for :memberships do |membership| %>
+          <tr>
+          <td><%=membership.object.user.name%></td>
+            <td><%=membership.object.user.email%></td>
+            <td><%=membership.check_box :admin %><%=membership.hidden_field :id %></td>
+            <td><%=membership.check_box :developer %></td>
+            <td><%=membership.check_box :client %></td>
+            <td><%=link_to "Remove", project_membership_path(@project, membership.object), :method => :delete, :confirm => "Are you sure?" %></td>
+          </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+  <%=f.submit "Save", :class => "button" %>
+  <% end %>
+
+    <h1>Invitations</h1>
+    <div id="invitations">
+    <table>
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Admin?</th>
+        <th>Developer?</th>
+        <th>Client?</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @project.invitations.each do |invitation| %>
+          <tr>
+          <td><%=invitation.email%></td>
+            <td><%=invitation.admin? %></td>
+            <td><%=invitation.developer? %></td>
+            <td><%=invitation.client? %></td>
+            <td><%=link_to "Remove", project_invitation_path(@project, invitation), :method => :delete, :confirm => "Are you sure?" %></td>
+          </tr>
+    <% end %>
+      </tbody>
+    </table>
+    </div>
+</div>

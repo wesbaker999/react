@@ -1,0 +1,7 @@
+<div class="inner">
+<%=form_for @estimate, :url => project_estimates_path(@project), :html => {:class => "estimate_form"} do |f|%>
+<%=render :partial => "fields", :locals => {:f =>f}%>
+<%= f.submit "Add Line Item", :class => "button black", :name => "add_line_item" %>
+<%=f.submit "Create", :class=>"button large"%>
+<% end %>
+</div>

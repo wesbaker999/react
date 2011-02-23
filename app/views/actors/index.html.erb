@@ -1,0 +1,6 @@
+<%content_for(:sidebar) do %>
+<a href="<%=new_project_actor_path(@project)%>" class="button large action"><span>New Actor</span></a>
+<% end %>
+<ul class="simple-list actors">
+  <%=render :partial => "actor", :collection => @actors%>
+</ul>

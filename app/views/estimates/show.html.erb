@@ -1,0 +1,73 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+  <ul class="actions">
+    <li><a href="<%=edit_project_estimate_path(@project, @estimate)%>" class="button large black"><span>Edit Estimate</span></a></li>
+    <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_estimate_path(@project, @estimate)%>" class="button red"><span>Delete Estimate</span></a></li>
+   </ul>
+</div>
+<% end %>
+
+<div class="inner">
+<h2><%= "#{@estimate.name} - Min #{@estimate.min_hours_total} / Max #{@estimate.max_hours_total}" %></h2>
+
+<table class="estimates">
+  <thead>
+  <tr>
+    <th></th>
+    <th class="hours">Min</th>
+    <th class="hours">Max</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @estimate.story_estimates.each do |se| %>
+    <tr>
+      <td class="story_title"><%= se.story.title_with_number %></td>
+      <td class="hours"><%= se.min_hours %></td>
+      <td class="hours"><%= se.max_hours %></td>
+    </tr>
+  <% end %>
+  <% @estimate.line_items.each do |le| %>
+    <tr>
+      <td class="story_title"><%= le.description %></td>
+      <td class="hours"><%= le.min_hours %></td>
+      <td class="hours"><%= le.max_hours %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="signatures">
+  <div class="developer signature">
+    <div class="ink">
+      <% if @estimate.developer_signature %>
+        <h2><%= @estimate.developer_signature.user.name %></h2>
+      <% else %>
+        <% if @membership.developer %>
+          <%= button_to "Sign off as Developer", developer_sign_project_estimate_path(@project, @estimate), :method => :put, :class => "button large" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="byline">Developer
+      <% if @estimate.developer_signature %>
+        <div>Signed <%= @estimate.developer_signature.created_at.to_s(:day_time) %></div>
+      <% end %></div>
+  </div>
+
+  <div class="client signature">
+    <div class="ink">
+      <% if @estimate.client_signature %>
+        <h2><%= @estimate.client_signature.user.name %></h2>
+      <% else %>
+        <% if @membership.client %>
+          <%= button_to "Sign off as Client", client_sign_project_estimate_path(@project, @estimate), :method => :put, :class => "button large" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="byline">Client
+      <% if @estimate.client_signature %>
+        <div>Signed <%= @estimate.client_signature.created_at.to_s(:day_time) %></div>
+      <% end %></div>
+  </div>
+</div>
+  <div style="clear:both;"></div>
+</div>

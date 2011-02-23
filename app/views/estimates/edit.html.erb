@@ -1,0 +1,14 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+<ul class="actions">
+<li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_estimate_path(@project, @estimate)%>" class="button red"><span>Delete Estimate</span></a></li>
+</ul>
+</div>
+<% end %>
+<div class="inner">
+<%=form_for @estimate, :url => project_estimate_path(@project, @estimate), :method=>:put, :html => {:class => "estimate_form"} do |f|%>
+<%=render :partial => "fields", :locals => {:f =>f}%>
+<%= f.submit "Add Line Item", :class => "button black", :name => "add_line_item" %>
+<%=f.submit "Update", :class=>"button large"%>
+<% end %>
+</div>
