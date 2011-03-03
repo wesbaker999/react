@@ -1,6 +1,6 @@
 <div class="inner">
-<h1>New Story</h1>
-<%=form_for @story, :url => project_stories_path(@project) do |f|%>
+<h1>New Feature</h1>
+<%=form_for @feature, :url => project_features_path(@project) do |f|%>
 <%=render :partial => "fields", :locals => {:f =>f}%>
 <%=f.submit "Create", :class=>"button"%>
 <% end %>

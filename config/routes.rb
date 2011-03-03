@@ -9,7 +9,7 @@ React::Application.routes.draw do
   resources :projects do
     resources :actors
     resources :memberships
-    resources :stories do
+    resources :features do
       member do
         put :developer_sign
         put :client_sign

@@ -3,7 +3,7 @@ class EstimatesController < ApplicationController
   before_filter :new_estimate, :only => [:new, :create]
   before_filter :load_estimate, :only => [:show, :edit, :update, :destroy, :developer_sign, :client_sign]
   before_filter :update_estimate, :only => [:update]
-  before_filter :add_stories, :only => [:new, :edit]
+  before_filter :add_features, :only => [:new, :edit]
 
   before_filter do
     @tab="estimates"
@@ -84,10 +84,10 @@ class EstimatesController < ApplicationController
     @estimate = @project.estimates.find(params[:id])
   end
 
-  def add_stories
-    @project.stories.each do |story|
-      unless @estimate.stories.include?(story)
-        @estimate.story_estimates.build(:story => story)
+  def add_features
+    @project.features.each do |feature|
+      unless @estimate.features.include?(feature)
+        @estimate.feature_estimates.build(:feature => feature)
       end
     end
   end

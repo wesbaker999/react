@@ -9,17 +9,17 @@
   </tr>
   </thead>
   <tbody>
-  <%= f.fields_for :story_estimates do |g| %>
-  <%= g.hidden_field :story_id %>
+  <%= f.fields_for :feature_estimates do |g| %>
+  <%= g.hidden_field :feature_id %>
     <tr>
-      <td class="story_title"><%= g.object.story.title_with_number %></td>
+      <td class="feature_title"><%= g.object.feature.title_with_number %></td>
       <td class="hours"><%= g.text_field :min_hours %></td>
       <td class="hours"><%= g.text_field :max_hours %></td>
     </tr>
   <% end %>
   <%= f.fields_for :line_items do |g| %>
     <tr>
-      <td class="story_title"><%= g.text_field :description %></td>
+      <td class="feature_title"><%= g.text_field :description %></td>
       <td class="hours"><%= g.text_field :min_hours %></td>
       <td class="hours"><%= g.text_field :max_hours %></td>
     </tr>

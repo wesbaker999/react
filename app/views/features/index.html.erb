@@ -1,9 +1,9 @@
 <%content_for(:sidebar) do %>
-<a href="<%=new_project_story_path(@project)%>" class="button large action"><span>New Story</span></a>
+<a href="<%=new_project_feature_path(@project)%>" class="button large action"><span>New Feature</span></a>
 <%=render :partial => "projects/tabs"%>
 <% end %>
-<div id="story_bar">
-<% form_tag project_stories_path(@project), :id => "story_bar_search", :method => :get, :remote => true do %>
+<div id="feature_bar">
+<% form_tag project_features_path(@project), :id => "feature_bar_search", :method => :get, :remote => true do %>
   <div class="sort"><a class="<%=@sort%>"></a></div>
   <div class="search">
     <input type="text" name="q" id="q" value="" autocomplete="off" />
@@ -13,6 +13,6 @@
   <input type="hidden" name="unsigned" id="unsigned" value="<%=@unsigned%>"/>
 <% end %>
 </div>
-<ul id="stories">
-  <%=render :partial => "story", :collection => @stories%>
+<ul id="features">
+  <%=render :partial => "feature", :collection => @features%>
 </ul>

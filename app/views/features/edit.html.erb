@@ -1,0 +1,14 @@
+<% content_for(:sidebar) do %>
+<div class="inner">
+    <ul class="actions">
+    <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete Feature</span></a></li>
+    </ul>
+</div>
+<% end %>
+<div class="inner">
+  <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
+<%=form_for @feature, :url => project_feature_path(@project, @feature), :method=>:put do |f|%>
+<%=render :partial => "fields", :locals => {:f =>f}%>
+    <%=f.submit "Update", :class=>"button"%>
+<% end %>
+</div>

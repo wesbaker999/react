@@ -1,0 +1,7 @@
+Feature #<%= @feature.project_feature_id %> "<%= @feature.title %>" has been updated by <%= @feature.updated_by.name %>:
+
+<%=@as_a_or_an%> <%=@feature.actor.name%>
+<%=@feature.description%>
+
+---
+Click here to review and sign off: <%= project_feature_url(@feature.project, @feature) %>

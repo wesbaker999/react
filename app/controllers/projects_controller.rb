@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    redirect_to project_stories_path(@project)
+    redirect_to project_features_path(@project)
   end
 
   def index

@@ -19,16 +19,16 @@
   </tr>
   </thead>
   <tbody>
-  <% @estimate.story_estimates.each do |se| %>
+  <% @estimate.feature_estimates.each do |se| %>
     <tr>
-      <td class="story_title"><%= se.story.title_with_number %></td>
+      <td class="feature_title"><%= se.feature.title_with_number %></td>
       <td class="hours"><%= se.min_hours %></td>
       <td class="hours"><%= se.max_hours %></td>
     </tr>
   <% end %>
   <% @estimate.line_items.each do |le| %>
     <tr>
-      <td class="story_title"><%= le.description %></td>
+      <td class="feature_title"><%= le.description %></td>
       <td class="hours"><%= le.min_hours %></td>
       <td class="hours"><%= le.max_hours %></td>
     </tr>

@@ -1,7 +1,7 @@
 Feature: Projects
   As a User
   I want to create and edit projects
-  So that I can work on some stories
+  So that I can work on some features
 
   Scenario: Create a project
     Given I am logged in
@@ -12,7 +12,7 @@ Feature: Projects
       And I check "developer"
       And I press "Create"
     Then I should see "Blog"
-      And I should see "New Story"
+      And I should see "New Feature"
 
   Scenario: Edit project name
     Given I am logged in

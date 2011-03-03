@@ -1,0 +1,64 @@
+<% content_for(:sidebar) do %>
+
+<div class="inner">
+    <ul class="actions">
+        <li><a href="<%=edit_project_feature_path(@project,@feature)%>" class="button large black"><span>Edit Feature</span></a></li>
+        <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete Feature</span></a></li>
+    </ul>
+<% if @feature.updated_by %>
+    <div>
+      Last updated by:<br/>
+      <%=@feature.updated_by.name%><br/>
+      <%=@feature.updated_at.to_s(:day_time)%>
+    </div>
+<% end %>
+</div>
+<% end %>
+<div class="feature inner">
+<h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
+<div class="description">
+  <div class="as_a"><%=as_a_or_an(@feature.actor.name)%> <%=link_to @feature.actor.name, project_actor_path(@project,@feature.actor)%></div>
+  <%=simple_format(link_feature_terms(@feature))%>
+</div>
+
+  <div class="signatures">
+
+
+    <div class="developer signature">
+      <div class="ink">
+    <% if @feature.developer_signature %>
+    <h2><%=@feature.developer_signature.user.name%></h2>
+    <%else%>
+        <% if @membership.developer %>
+        <%=button_to "Sign off as Developer", developer_sign_project_feature_path(@project, @feature), :method => :put, :class => "button large"%>
+        <% end %>
+    <% end %>
+      </div>
+      <div class="byline">Developer<% if @feature.developer_signature %><div><%=@feature.developer_signature.created_at.to_s(:day_time)%></div><% end %></div>
+    </div>
+
+        <div class="client signature">
+      <div class="ink">
+    <% if @feature.client_signature %>
+    <h2><%=@feature.client_signature.user.name%></h2>
+    <%else%>
+        <% if @membership.client %>
+            <%=button_to "Sign off as Client", client_sign_project_feature_path(@project, @feature), :method => :put, :class => "button large"%>
+        <% end %>
+    <% end %>
+        </div>
+      <div class="byline">Client<% if @feature.client_signature %><div><%=@feature.client_signature.created_at.to_s(:day_time)%></div><% end %></div>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+
+</div>
+<% content_for(:bottom_content) do %>
+    <ul id="comments">
+      <%= render :partial => "comment", :collection => @feature.comments.latest %>
+    </ul>
+    <%= form_for :comment, :url => comment_project_feature_path(@project, @feature), :html => {:id => "new_comment"} do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit "Post Comment", :class => "button " %>
+    <% end %>
+<% end %>

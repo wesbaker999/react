@@ -1,22 +1,22 @@
 Feature: Estimates
   As an User
-  I want to estimate stories
+  I want to estimate features
   So that I can give a quote to the client
 
   Scenario: Create an estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
     When I click "Estimates"
       And I click "New Estimate"
       And I fill in "estimate[name]" with "The Beta"
-      And I fill in "estimate[story_estimates_attributes][0][min_hours]" with "1"
-      And I fill in "estimate[story_estimates_attributes][0][max_hours]" with "3"
-      And I fill in "estimate[story_estimates_attributes][1][min_hours]" with "2"
-      And I fill in "estimate[story_estimates_attributes][1][max_hours]" with "4"
+      And I fill in "estimate[feature_estimates_attributes][0][min_hours]" with "1"
+      And I fill in "estimate[feature_estimates_attributes][0][max_hours]" with "3"
+      And I fill in "estimate[feature_estimates_attributes][1][min_hours]" with "2"
+      And I fill in "estimate[feature_estimates_attributes][1][max_hours]" with "4"
       And I press "Create"
     Then I should see "Estimate created"
       And I should see "The Beta"
@@ -26,8 +26,8 @@ Feature: Estimates
   Scenario: Edit an estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
@@ -35,7 +35,7 @@ Feature: Estimates
       And I click the first estimate for the project "Blog"
       And I click "Edit Estimate"
       And I fill in "estimate[name]" with "The Alpha"
-      And I fill in "estimate[story_estimates_attributes][1][max_hours]" with "4"
+      And I fill in "estimate[feature_estimates_attributes][1][max_hours]" with "4"
       And I press "Update"
     Then I should see "Estimate updated"
       And I should see "The Alpha"
@@ -44,8 +44,8 @@ Feature: Estimates
   Scenario: Delete an estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
@@ -59,8 +59,8 @@ Feature: Estimates
       And there is a project called "Blog"
       And I am a "client" on the project called "Blog"
       And there is a "developer" "Bob" on the project "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
       And I am viewing the project called "Blog"
     When I click "Estimates"
@@ -73,8 +73,8 @@ Feature: Estimates
       And there is a project called "Blog"
       And I am a "developer" on the project called "Blog"
       And there is a "client" "Bob" on the project "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
       And I am viewing the project called "Blog"
     When I click "Estimates"
@@ -85,16 +85,16 @@ Feature: Estimates
   Scenario: Add line items to a new estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
     When I click "Estimates"
       And I click "New Estimate"
-      And I fill in "estimate[story_estimates_attributes][0][min_hours]" with "1"
-      And I fill in "estimate[story_estimates_attributes][0][max_hours]" with "3"
-      And I fill in "estimate[story_estimates_attributes][1][min_hours]" with "2"
-      And I fill in "estimate[story_estimates_attributes][1][max_hours]" with "4"
+      And I fill in "estimate[feature_estimates_attributes][0][min_hours]" with "1"
+      And I fill in "estimate[feature_estimates_attributes][0][max_hours]" with "3"
+      And I fill in "estimate[feature_estimates_attributes][1][min_hours]" with "2"
+      And I fill in "estimate[feature_estimates_attributes][1][max_hours]" with "4"
       And I press "Add Line Item"
       And I fill in "estimate[line_items_attributes][0][description]" with "Server setup"
       And I fill in "estimate[line_items_attributes][0][min_hours]" with "4"
@@ -108,21 +108,21 @@ Feature: Estimates
       And I should see "Min 9"
       And I should see "Max 19"
 
-  Scenario: Add stories to an existing estimate
+  Scenario: Add features to an existing estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
-      And there is a story "Polls" on the project "Blog"
+      And there is a feature "Polls" on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
     When I click "Estimates"
       And I click the first estimate for the project "Blog"
     Then I should not see "Polls"
     When I click "Edit Estimate"
-      And I fill in "estimate[story_estimates_attributes][2][min_hours]" with "3"
-      And I fill in "estimate[story_estimates_attributes][2][max_hours]" with "6"
+      And I fill in "estimate[feature_estimates_attributes][2][min_hours]" with "3"
+      And I fill in "estimate[feature_estimates_attributes][2][max_hours]" with "6"
       And I press "Update"
     Then I should see "Estimate updated"
       And I should see "Max 14"
@@ -130,8 +130,8 @@ Feature: Estimates
   Scenario: Add line items to an existing estimate
     Given I am logged in
       And there is a project called "Blog"
-      And there is a story "Posts" on the project "Blog"
-      And there is a story "Comments" on the project "Blog"
+      And there is a feature "Posts" on the project "Blog"
+      And there is a feature "Comments" on the project "Blog"
       And there is an estimate on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"

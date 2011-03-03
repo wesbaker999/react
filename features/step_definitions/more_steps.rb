@@ -28,9 +28,9 @@ Given /^there is a(?:n?) "([^"]+)" "([^"]+)" on the project "([^"]+)"/ do |role,
   project.memberships.create!(:user => user, role => true)
 end
 
-Given /^there is a story "([^"]+)" on the project "([^"]+)"/ do |title, name|
+Given /^there is a feature "([^"]+)" on the project "([^"]+)"/ do |title, name|
   project = Project.where(:name => name).first
-  project.stories.create!(:title => title,
+  project.features.create!(:title => title,
                           :description => "I want to do stuff so Customers can see things",
                           :actor => project.actors.where(:name => "User").first)
 end
@@ -38,16 +38,9 @@ end
 Given /^there is an estimate on the project "([^"]+)"/ do |name|
   project = Project.where(:name => name).first
   e = project.estimates.create!
-  project.stories.each do |s|
-    e.story_estimates.create!(:story => s, :min_hours => 2, :max_hours => 4)
+  project.features.each do |s|
+    e.feature_estimates.create!(:feature => s, :min_hours => 2, :max_hours => 4)
   end
-end
-
-Given /^there is a scenario "([^"]+)" for story "([^"]+)" on the project "([^"]+)"/ do |scenario_title, story_title, project_name|
-  project = Project.where(:name => project_name).first
-  story = project.stories.where(:title => story_title).first
-  story.scenarios.create!(:title => scenario_title,
-                          :description => "When I do one thing, Then another thing happens")
 end
 
 Given /^there is a term "([^"]+)" on the project "([^"]+)"/ do |term, name|
@@ -56,10 +49,10 @@ Given /^there is a term "([^"]+)" on the project "([^"]+)"/ do |term, name|
                           :definition => "What it means")
 end
 
-Given /^there is a story "([^"]+)" for actor "([^"]+)" on the project "([^"]+)"/ do |title, actor_name, project_name|
+Given /^there is a feature "([^"]+)" for actor "([^"]+)" on the project "([^"]+)"/ do |title, actor_name, project_name|
   project = Project.where(:name => project_name).first
   actor = project.actors.where(:name => actor_name).first
-  project.stories.create!(:title => title,
+  project.features.create!(:title => title,
                           :description => "I want to do stuff",
                           :actor => actor)
 end

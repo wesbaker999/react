@@ -320,8 +320,8 @@ input[type='submit'].button{
     border-bottom: 1px ridge #ccc;
 }
 
-/** Stories **/
-#stories li{
+/** features **/
+#features li{
     height: 32px;
     line-height: 32px;
     border-bottom: 1px ridge #ccc;
@@ -329,13 +329,13 @@ input[type='submit'].button{
     clear: both;
 }
 
-#stories li a{
+#features li a{
     display: block;
     line-height: 32px;
     text-decoration: none;
 }
 
-#stories li .id{
+#features li .id{
     background: #f7f7f7;
     width: 24px;
     text-align: right;
@@ -345,7 +345,7 @@ input[type='submit'].button{
     margin-right: 0.5em;
 }
 
-#stories li .id span{
+#features li .id span{
     background: #999;
     color: #eee;
     font-size: 12px;
@@ -362,35 +362,35 @@ input[type='submit'].button{
     text-align: center;
 }
 
-#stories li .title{
+#features li .title{
     
 }
 
-#stories li a:hover{
+#features li a:hover{
     background: #ddd;
 }
 
-#stories li a:hover .id{
+#features li a:hover .id{
     background: #ccc;
 }
 
-#stories li a:hover .id span{
+#features li a:hover .id span{
     background: #333;
     color: #fff;
 }
 
-#stories{
+#features{
     margin-bottom: 10px;
     clear: both;
 }
 
-#story_title, #term_name, #scenario_title{
+#feature_title, #term_name{
     font-size:x-large;
     font-weight:bold;
     width: 100%;
 }
 
-#story_description, #scenario_description{
+#feature_description{
     width: 100%;
     height: 8em;
     font-size: x-large;
@@ -398,18 +398,18 @@ input[type='submit'].button{
     padding: 2px;
 }
 
-#story_actor_id{
+#feature_actor_id{
     display: inline;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: small;
 }
 
-div.story div.description{
+div.feature div.description{
     font-size: x-large;
     margin: 1em 0;
 }
 
-div.story a.term, .diff a.term{
+div.feature a.term, .diff a.term{
     cursor: help;
     text-decoration: none;
     color: #333;
@@ -422,7 +422,7 @@ border-style: dotted;
     background: #eee;
 }
 
-#story_bar{
+#feature_bar{
     line-height: 40px;
     height: 40px;
     border-bottom: 1px solid #ddd;
@@ -432,16 +432,16 @@ border-style: dotted;
     border-radius:  10px 0 0 0;
 }
 
-#story_bar div{
+#feature_bar div{
     float: left;
     display: block;
 }
 
-#story_bar .sort{
+#feature_bar .sort{
     width: 32px;
 }
 
-#story_bar .sort a{
+#feature_bar .sort a{
     background: #ccc;
     color: #eee;
     font-size: 12px;
@@ -459,29 +459,29 @@ border-style: dotted;
     cursor: pointer;
 }
 
-#story_bar .sort a.asc{
+#feature_bar .sort a.asc{
     background-image: url('/images/asc.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#story_bar .sort a.desc{
+#feature_bar .sort a.desc{
     background-image: url('/images/desc.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#story_bar .search{
+#feature_bar .search{
     width: 380px;
 }
 
-#story_bar .search input[type='text']{
+#feature_bar .search input[type='text']{
     font-size: 18px;
     border: 1px solid #ddd;
     width: 378px;
 }
 
-#story_bar .unsigned a{
+#feature_bar .unsigned a{
     background: #ccc;
     color: #fff;
     font-size: 12px;
@@ -500,7 +500,7 @@ border-style: dotted;
     text-shadow: rgba(0,0,0,0.1) -1px -1px; /* and -webkit- -moz- versions */
 }
 
-#story_bar .unsigned .true{
+#feature_bar .unsigned .true{
     background: #333;
     text-shadow: rgba(20,20,20,0.1) -1px -1px; /* and -webkit- -moz- versions */
 }
@@ -576,7 +576,7 @@ border-style: dotted;
 .estimates td {
   padding: 0.25em 0;
 }
-.estimates .story_title {
+.estimates .feature_title {
   font-weight: bold;
   font-size: large;
 }
@@ -589,7 +589,7 @@ border-style: dotted;
   display: inline;
   width: 2em;
 }
-.estimates .story_title input {
+.estimates .feature_title input {
   width: 80%;
 }
 
@@ -660,20 +660,4 @@ ul.simple-list li a:hover{
 
 .sign_in{
     margin-bottom: 1em;
-}
-
-#scenarios{
-    margin: 1em 0;
-    padding-left: 1em;
-}
-#scenarios .description {
-    font-size: small;
-    margin-bottom: 1em;
-}
-#scenarios h2 a{
-    font-weight: 200;
-    text-decoration: none;
-}
-#scenarios h2 a:hover{
-    text-decoration: underline;
 }

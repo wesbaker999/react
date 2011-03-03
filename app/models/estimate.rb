@@ -1,13 +1,13 @@
 class Estimate < ActiveRecord::Base
-  has_many :story_estimates
-  has_many :stories, :through => :story_estimates
+  has_many :feature_estimates
+  has_many :features, :through => :feature_estimates
   has_many :estimate_signatures
   has_many :line_items
   belongs_to :project
   belongs_to :developer_signature, :class_name => "EstimateSignature"
   belongs_to :client_signature, :class_name => "EstimateSignature"
 
-  accepts_nested_attributes_for :story_estimates
+  accepts_nested_attributes_for :feature_estimates
   accepts_nested_attributes_for :line_items
 
   before_update :clear_signatures
@@ -29,11 +29,11 @@ class Estimate < ActiveRecord::Base
   end
 
   def min_hours_total
-    self.story_estimates.min_total.first.total.to_i + self.line_items.min_total.first.total.to_i
+    self.feature_estimates.min_total.first.total.to_i + self.line_items.min_total.first.total.to_i
   end
 
   def max_hours_total
-    self.story_estimates.max_total.first.total.to_i + self.line_items.max_total.first.total.to_i
+    self.feature_estimates.max_total.first.total.to_i + self.line_items.max_total.first.total.to_i
   end
 
   protected

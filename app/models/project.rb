@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :actors
   has_many :memberships
-  has_many :stories
+  has_many :features
   has_many :glossary_terms
   has_many :invitations
   has_many :estimates
@@ -15,10 +15,10 @@ class Project < ActiveRecord::Base
 
   after_create :create_actor
 
-  def next_project_story_id
-    Project.increment_counter(:project_story_id_counter, self.id)
+  def next_project_feature_id
+    Project.increment_counter(:project_feature_id_counter, self.id)
     self.reload
-    self.project_story_id_counter
+    self.project_feature_id_counter
   end
 
   protected

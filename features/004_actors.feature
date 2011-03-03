@@ -1,7 +1,7 @@
 Feature: Actors
   As a User
   I want to create actors
-  So that they can have stories
+  So that they can have features
 
   Scenario: Create an actor
     Given I am logged in
@@ -30,11 +30,11 @@ Feature: Actors
     Then I should see "Steve"
       And I should not see "Dave"
 
-  Scenario: View stories for an actor
+  Scenario: View features for an actor
     Given I am logged in
       And there is a project called "Blog"
       And there is an actor "Dave" on the project "Blog"
-      And there is a story "Comments" for actor "Dave" on the project "Blog"
+      And there is a feature "Comments" for actor "Dave" on the project "Blog"
       And I am a "developer" on the project called "Blog"
       And I am viewing the project called "Blog"
     When I click "Actors" within "#sidebar"

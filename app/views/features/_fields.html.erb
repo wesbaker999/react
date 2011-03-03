@@ -1,10 +1,10 @@
-<%=errors_for @story %>
+<%=errors_for @feature %>
 <div class="field">
 <%=f.label :title%>
 <%=f.text_field :title%>
 </div>
 <div class="field">
-<%=f.label :actor, (@story.actor ? as_a_or_an(@story.actor.name) : "As a"), :style=>"margin-right: 5px; display:inline" %>
+<%=f.label :actor, (@feature.actor ? as_a_or_an(@feature.actor.name) : "As a"), :style=>"margin-right: 5px; display:inline" %>
 <%=f.select :actor_id, @project.actors.alphabetical.collect {|a| [ a.name, a.id ] }, { :include_blank => true } %>
 </div>
 <div class="field">

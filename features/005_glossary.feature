@@ -1,7 +1,7 @@
 Feature: Glossary
   As a User
   I want to define terms in a glossary
-  So that my stories are consistent
+  So that my features are consistent
 
   Scenario: Create a term
     Given I am logged in
