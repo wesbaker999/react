@@ -223,11 +223,15 @@ a:visited{
     text-align: center;
     margin: 2em 0;
     font-size: small;
-    color: #bbb;
+    color: #aaa;
 }
 
 #footer a{
-    color: #bbb;
+    color: #aaa;
+}
+
+#footer .copyright p{
+    margin: 0.5em 0;
 }
 
 /** Buttons **/
