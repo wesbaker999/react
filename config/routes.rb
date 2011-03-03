@@ -10,7 +10,6 @@ React::Application.routes.draw do
     resources :actors
     resources :memberships
     resources :stories do
-      resources :scenarios
       member do
         put :developer_sign
         put :client_sign

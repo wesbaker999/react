@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210181954) do
+ActiveRecord::Schema.define(:version => 20110303164042) do
 
   create_table "actors", :force => true do |t|
     t.integer  "project_id"
@@ -87,15 +87,6 @@ ActiveRecord::Schema.define(:version => 20110210181954) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_story_id_counter", :default => 0
-  end
-
-  create_table "scenarios", :force => true do |t|
-    t.integer  "story_id"
-    t.string   "title"
-    t.text     "description"
-    t.integer  "story_scenario_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "signatures", :force => true do |t|

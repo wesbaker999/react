@@ -1,7 +1,0 @@
-<div class="inner">
-<h1>New Scenario</h1>
-<%=form_for @scenario, :url => project_story_scenarios_path(@project, @story) do |f|%>
-<%=render :partial => "fields", :locals => {:f =>f}%>
-<%=f.submit "Create", :class=>"button"%>
-<% end %>
-</div>

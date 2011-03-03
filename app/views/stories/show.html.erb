@@ -1,9 +1,8 @@
 <% content_for(:sidebar) do %>
-<a href="<%= new_project_story_scenario_path(@project, @story) %>" class="button large action"><span>New Scenario</span></a>
+<a href="<%=edit_project_story_path(@project,@story)%>" class="button large action"><span>Edit Story</span></a>
 
-<div class="inner">
+    <div class="inner">
     <ul class="actions">
-        <li><a href="<%=edit_project_story_path(@project,@story)%>" class="button large black"><span>Edit Story</span></a></li>
         <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_story_path(@project,@story)%>" class="button red"><span>Delete Story</span></a></li>
     </ul>
 <% if @story.updated_by %>
@@ -22,17 +21,6 @@
   <%=simple_format(link_story_terms(@story))%>
 </div>
 
-
-<% if @story.scenarios.count > 0 %>
-  <div id="scenarios">
-  <% @story.scenarios.each do |scenario| %>
-      <div class="scenario">
-        <h2><a href="<%= edit_project_story_scenario_path(@project, @story, scenario)%>">#<%= @story.project_story_id %>.<%= scenario.story_scenario_id %>: <%= scenario.title %></a></h2>
-        <div class="description"><%= simple_format(link_story_terms_by_string(scenario.description, @project)) %></div>
-      </div>
-  <% end %>
-  </div>
-<% end %>
   <div class="signatures">
 
 
