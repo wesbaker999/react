@@ -1,7 +1,7 @@
   <ul class="tabs">
    <li><%=link_to "Glossary", project_glossary_terms_path(@project), :class=> (@tab=="terms" ? "active" : nil)%></li>
+        <li><%=link_to "Actors", project_actors_path(@project), :class=> (@tab=="actors" ? "active" : nil)%></li>
      <li><%=link_to "Estimates", project_estimates_path(@project), :class=> (@tab=="estimates" ? "active" : nil)%></li>
-    <li><%=link_to "Actors", project_actors_path(@project), :class=> (@tab=="actors" ? "active" : nil)%></li>
      <%if @membership && @membership.admin?%><li><%=link_to "Members", project_memberships_path(@project), :class=> (@tab=="members" ? "active" : nil)%></li><% end %>
     <%if @membership && @membership.admin?%><li><%=link_to "Settings", edit_project_path(@project), :class=> (@tab=="settings" ? "active" : nil)%></li><% end %>
   </ul>

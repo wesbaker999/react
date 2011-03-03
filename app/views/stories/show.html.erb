@@ -1,8 +1,8 @@
 <% content_for(:sidebar) do %>
-<a href="<%=edit_project_story_path(@project,@story)%>" class="button large action"><span>Edit Story</span></a>
 
-    <div class="inner">
+<div class="inner">
     <ul class="actions">
+        <li><a href="<%=edit_project_story_path(@project,@story)%>" class="button large black"><span>Edit Story</span></a></li>
         <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_story_path(@project,@story)%>" class="button red"><span>Delete Story</span></a></li>
     </ul>
 <% if @story.updated_by %>
