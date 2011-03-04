@@ -30,6 +30,9 @@ React::Application.routes.draw do
       end
     end
     put 'memberships' => "memberships#index"
+    member do
+      put :generate_api_key
+    end
   end
 
   match 'signin' => "user_sessions#new"

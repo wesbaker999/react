@@ -21,6 +21,11 @@ class Project < ActiveRecord::Base
     self.project_feature_id_counter
   end
 
+  def generate_api_key!
+    self.api_key = UUIDTools::UUID.random_create.hexdigest
+    save
+  end
+
   protected
 
   def create_actor

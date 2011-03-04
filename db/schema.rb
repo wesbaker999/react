@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110303182540) do
+=======
+ActiveRecord::Schema.define(:version => 20110304010015) do
+>>>>>>> project API keys
 
   create_table "actors", :force => true do |t|
     t.integer  "project_id"
@@ -126,7 +130,21 @@ ActiveRecord::Schema.define(:version => 20110303182540) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.integer  "project_feature_id_counter", :default => 0
+=======
+    t.integer  "project_story_id_counter", :default => 0
+    t.string   "api_key"
+  end
+
+  create_table "scenarios", :force => true do |t|
+    t.integer  "story_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "story_scenario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> project API keys
   end
 
   create_table "signatures", :force => true do |t|

@@ -32,6 +32,15 @@ class ProjectsController < ApplicationController
     render :action => :edit
   end
 
+  def generate_api_key
+    @tab="settings"
+    if @project.generate_api_key!
+      flash[:notice] = "API key generated"
+      redirect_to edit_project_path(@project) and return
+    end
+    render :action => :edit
+  end
+
   def show
     redirect_to project_features_path(@project)
   end

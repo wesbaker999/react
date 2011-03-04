@@ -24,3 +24,13 @@ Feature: Projects
       And I press "Update"
     Then I should see "CMS"
       And I should not see "Blog"
+
+  Scenario: Generate project API key
+    Given I am logged in
+      And there is a project called "Blog"
+      And I am an "admin" on the project called "Blog"
+      And I am viewing the project called "Blog"
+    When I click "Settings" within "#sidebar"
+      And I press "Generate new API key"
+    Then I should see "API key generate"
+      And I should not see "None" within "#project_api_key"
