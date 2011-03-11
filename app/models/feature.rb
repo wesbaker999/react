@@ -59,6 +59,22 @@ class Feature < ActiveRecord::Base
     "##{self.project_feature_id}: #{self.title}"
   end
 
+  def test_scenarios
+    JunitReport.new(self.test_report).scenarios
+  end
+
+  def passed?
+    self.num_tests > 0 && self.num_failures == 0
+  end
+
+  def failed?
+    self.num_tests > 0 && self.num_failures > 0
+  end
+
+  def unimplemented?
+    self.num_tests == 0
+  end
+
   protected
 
   def set_project_feature_id

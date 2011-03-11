@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="1" name="#1 Sign up" tests="2" time="0.672006">
+<testcase classname="Sign up.Successful sign up" name="Successful sign up" time="0.570718">
+  <failure message="failed Successful sign up" type="failed">
+    <![CDATA[Scenario: Successful sign up
+
+When I am on the home page
+Then I should see "Sign up"
+When I fill in "user[email]" with "test@test.com"
+And I fill in "user[name]" with "Test Name"
+And I fill in "user[password]" with "password"
+And I fill in "user[password_confirmation]" with "password"
+And I press "Sign up"
+Then I should see "Sign out asdfasfdsadf"
+
+Message:
+]]>
+    <![CDATA[expected #has_content?("Sign out asdfasfdsadf") to return true, got false (RSpec::Expectations::ExpectationNotMetError)
+./features/step_definitions/web_steps.rb:114:in `block (2 levels) in <top (required)>'
+./features/step_definitions/web_steps.rb:14:in `with_scope'
+./features/step_definitions/web_steps.rb:112:in `/^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/'
+features/001_sign_up.feature:14:in `Then I should see "Sign out asdfasfdsadf"']]>
+  </failure>
+</testcase>
+<testcase classname="Sign up.Unsuccessful sign up" name="Unsuccessful sign up" time="0.101288">
+</testcase>
+</testsuite>
