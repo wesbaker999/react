@@ -159,6 +159,7 @@ DEPENDENCIES
   htmldiff
   launchy
   mysql
+  nokogiri
   rails (= 3.0.3)
   rcov
   rspec-rails

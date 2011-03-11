@@ -34,6 +34,9 @@ React::Application.routes.draw do
       put :generate_api_key
     end
   end
+  namespace :api do
+    resource :ci_reports
+  end
 
   match 'signin' => "user_sessions#new"
   match 'signout' => "user_sessions#destroy"

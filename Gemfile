@@ -8,6 +8,7 @@ gem 'acts_as_versioned'
 gem 'uuidtools'
 gem 'htmldiff'
 gem 'aws-ses', :require => "aws/ses"
+gem 'nokogiri'
 
 group :test do
   gem 'rspec-rails'

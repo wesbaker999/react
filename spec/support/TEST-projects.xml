@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="#2 Projects" tests="2" time="0.904550">
+<testcase classname="#2 Projects.Create a project" name="Create a project" time="0.593405">
+</testcase>
+<testcase classname="#2 Projects.Edit project name" name="Edit project name" time="0.311145">
+</testcase>
+</testsuite>

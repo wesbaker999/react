@@ -7,4 +7,10 @@ end
 
 Factory.define(:project) do |p|
   p.name "Blog"
+  p.api_key "abcd1234"
+end
+
+Factory.define(:actor) do |a|
+  a.name "User"
+  a.description "Someone who does stuff"
 end
