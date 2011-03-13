@@ -1,3 +1,3 @@
-<li class="<% if feature.passed? %>passed<% else %>failed<% end %>">
+<li class="<% if feature.passed? %>passed<% elsif feature.failed? %>failed<% end %>">
   <a href="<%=project_feature_path(@project,feature)%>" class="title"><div class="id"><span><%=feature.project_feature_id%></span></div><%=feature.title%></a>
 </li>
