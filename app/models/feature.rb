@@ -60,6 +60,7 @@ class Feature < ActiveRecord::Base
   end
 
   def test_scenarios
+    return [] if self.test_report.blank?
     JunitReport.new(self.test_report).scenarios
   end
 

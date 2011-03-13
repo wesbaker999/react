@@ -53,6 +53,7 @@
   <div style="clear:both;"></div>
 
 </div>
+<% unless @feature.test_scenarios.empty? %>
 <div id="test_scenarios">
 <ul>
   <% for scenario in @feature.test_scenarios -%>
@@ -60,6 +61,7 @@
   <% end -%>
 </ul>
 </div>
+<% end %>
 <% content_for(:bottom_content) do %>
     <ul id="comments">
       <%= render :partial => "comment", :collection => @feature.comments.latest %>
