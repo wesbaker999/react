@@ -9,6 +9,7 @@ gem 'uuidtools'
 gem 'htmldiff'
 gem 'aws-ses', :require => "aws/ses"
 gem 'nokogiri'
+gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
 
 group :test do
   gem 'rspec-rails'

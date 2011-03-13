@@ -362,6 +362,22 @@ input[type='submit'].button{
     text-align: center;
 }
 
+#features li.passed .id, #features li.passed a:hover, #test_scenarios ul li.true{
+    background: #99cc94;
+}
+
+#features li.passed .id span, #features li.passed a:hover .id{
+    background: #10a800;
+}
+
+#features li.failed .id, #features li.failed a:hover {
+    background: #f57676;
+}
+
+#features li.failed .id span, #features li.failed a:hover .id{
+    background: #cf0000;
+}
+
 #features li .title{
     
 }
@@ -420,6 +436,25 @@ border-right-width: 0px;
 border-top-width: 0px;
 border-style: dotted;
     background: #eee;
+}
+
+#test_scenarios ul li{
+    height: 32px;
+    line-height: 32px;
+    position:relative;
+    clear: both;
+    padding: 0 1em;
+    color: #333;
+}
+
+#test_scenarios ul li.true{
+    background: #b5d7b2;
+    border-top: 1px solid #10a800;
+}
+
+#test_scenarios ul li.false{
+    background: #f7b6b6;
+    border-top: 1px solid #cf0000;
 }
 
 #feature_bar{

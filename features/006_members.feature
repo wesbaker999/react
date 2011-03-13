@@ -1,4 +1,4 @@
-Feature: Members
+Feature: "#6 Members"
   As an Admin
   I want to manage project members
   So that others can work on the project

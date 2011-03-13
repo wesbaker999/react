@@ -1,4 +1,4 @@
-Feature: Glossary
+Feature: "#5 Glossary"
   As a User
   I want to define terms in a glossary
   So that my features are consistent

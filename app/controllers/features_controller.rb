@@ -64,8 +64,8 @@ class FeaturesController < ApplicationController
   end
 
   def update
-    @feature.developer_signature_id = nil
-    @feature.client_signature_id = nil
+    @feature.developer_signature_id = @feature.client_signature_id = @feature.test_report = nil
+    @feature.num_tests = @feature.num_failures = 0
     @feature.updated_by = current_user
     if @feature.update_attributes(params[:feature])
       flash[:notice] = "Feature updated"

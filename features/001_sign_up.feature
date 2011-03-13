@@ -1,4 +1,4 @@
-Feature: Sign up
+Feature: "#1 Sign up"
   As a User
   I want to create an account
   So that I can use React

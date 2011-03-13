@@ -1,4 +1,4 @@
-Feature: Projects
+Feature: "#2 Projects"
   As a User
   I want to create and edit projects
   So that I can work on some features

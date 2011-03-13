@@ -53,6 +53,13 @@
   <div style="clear:both;"></div>
 
 </div>
+<div id="test_scenarios">
+<ul>
+  <% for scenario in @feature.test_scenarios -%>
+  <li class="<%=scenario[:passed]%>"><%=scenario[:name]%></li>
+  <% end -%>
+</ul>
+</div>
 <% content_for(:bottom_content) do %>
     <ul id="comments">
       <%= render :partial => "comment", :collection => @feature.comments.latest %>

@@ -1,4 +1,4 @@
-Feature: Features
+Feature: "#3 Features"
   As a User
   I want to create features
   So that I can define my project

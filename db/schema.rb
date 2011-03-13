@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311224116) do
+ActiveRecord::Schema.define(:version => 20110313054159) do
 
   create_table "actors", :force => true do |t|
     t.integer  "project_id"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(:version => 20110311224116) do
     t.integer  "client_signature_id"
     t.integer  "updated_by_id"
     t.text     "test_report"
-    t.integer  "num_tests"
-    t.integer  "num_failures"
+    t.integer  "num_tests",              :default => 0
+    t.integer  "num_failures",           :default => 0
   end
 
   add_index "feature_versions", ["feature_id"], :name => "index_feature_versions_on_feature_id"
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20110311224116) do
     t.integer  "client_signature_id"
     t.integer  "updated_by_id"
     t.text     "test_report"
-    t.integer  "num_tests"
-    t.integer  "num_failures"
+    t.integer  "num_tests",              :default => 0
+    t.integer  "num_failures",           :default => 0
   end
 
   create_table "glossary_terms", :force => true do |t|

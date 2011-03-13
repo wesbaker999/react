@@ -1,4 +1,4 @@
-Feature: Estimates
+Feature: "#7 Estimates"
   As an User
   I want to estimate features
   So that I can give a quote to the client

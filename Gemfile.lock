@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/reactualize/react_reporter.git
+  revision: 293e86f2e44a190a9ec3a7e5c67e5f0a686ce46a
+  specs:
+    react_reporter (1.0.0.dev)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -162,6 +168,7 @@ DEPENDENCIES
   nokogiri
   rails (= 3.0.3)
   rcov
+  react_reporter!
   rspec-rails
   spork
   unicorn
