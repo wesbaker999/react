@@ -34,3 +34,7 @@ React::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+ReactReporter.configure do |c|
+  c.api_key = "a7da3e81fdaf4355bb55967fb5f0afaf"
+end

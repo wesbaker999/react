@@ -27,3 +27,8 @@ React::Application.configure do
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
 end
 
+ReactReporter.configure do |c|
+  c.api_key = "a21b167da30548718b15ecbd699e179b"
+  c.host = "localhost"
+  c.port = 3000
+end
