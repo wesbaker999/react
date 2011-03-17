@@ -696,3 +696,11 @@ ul.simple-list li a:hover{
 .sign_in{
     margin-bottom: 1em;
 }
+
+.home.inner p{
+    margin: 1em 0;
+}
+
+.home.inner h1,.home.inner h2,.home.inner h3{
+    margin-bottom: 0.5em;
+}
