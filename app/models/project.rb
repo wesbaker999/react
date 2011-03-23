@@ -14,6 +14,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :memberships
 
   after_create :create_actor
+  after_create :generate_api_key!
 
   def next_project_feature_id
     Project.increment_counter(:project_feature_id_counter, self.id)
@@ -29,6 +30,6 @@ class Project < ActiveRecord::Base
   protected
 
   def create_actor
-    self.actors.create(:name => "User", :description => "<<Replace this with a real description of a User within your system>>")
+    self.actors.create(:name => "User")
   end
 end

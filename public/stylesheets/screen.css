@@ -703,13 +703,13 @@ ul.simple-list li a:hover{
     color: #fff;
 }
 
-#add_feature{
+#add_feature, #add_project{
     position: absolute;
     top: 40px;
     right: 0;
 }
 
-#add_feature span{
+#add_feature span, #add_project span{
     padding: 0 3em;
 }
 

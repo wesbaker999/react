@@ -4,7 +4,7 @@
   <title><%=@meta_title.reverse.join(" - ")%></title>
   <link type="image/png" href="/favicon.png" rel="icon">
   <%= stylesheet_link_tag "screen" %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   
   <%= javascript_include_tag :defaults %>
@@ -31,7 +31,11 @@
 <li class="last"><%=link_to "Sign up", "/signup"%></li>
 <%end%>
 </ul>
-<% if @project%><a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span>ADD FEATURE</span></a><%end%>
+<% if @project && @project.persisted?%>
+<a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span>ADD FEATURE</span></a>
+<% elsif @projects %>
+<a href="<%=new_project_path%>" class="button action" id="add_project"><span>ADD PROJECT</span></a>
+<%end%>
 </div>
 <% if flash[:notice]%><div id="flash"><%=flash[:notice]%></div><% end %>
 <div id="content_container">
@@ -39,7 +43,7 @@
 <div id="content">
   <div id="top_content"><%= content_for?(:content) ? yield(:content) : yield %></div>
   <div id="bottom_content"><%= yield(:bottom_content) %></div>
-<% if @project %>
+<% if @project && @project.persisted?%>
   <a id="glossary_tab"><img src="/images/glossary_tab.png"/></a>
 
   <div id="glossary">
