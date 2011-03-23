@@ -7,7 +7,7 @@
 <% end %>
 <div class="inner">
   <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
-<%=form_for @feature, :url => project_feature_path(@project, @feature), :method=>:put do |f|%>
+<%=form_for @feature, :url => project_feature_path(@project, @feature), :method=>:put, :html => {"project-id" => @project.id} do |f|%>
 <%=render :partial => "fields", :locals => {:f =>f}%>
     <%=f.submit "Update", :class=>"button"%>
 <% end %>

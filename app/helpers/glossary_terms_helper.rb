@@ -5,10 +5,10 @@ module GlossaryTermsHelper
 
   def link_feature_terms_by_string(string, project)
     output = project.glossary_terms.inject(string) do |result, t|
-      result.gsub(/#{t.name}/, link_to(t.name, project_glossary_term_path(project, t), :title => t.definition, :class => "term"))
+      result.gsub(/#{t.name}/, content_tag(:span, :class=>"term_container"){ content_tag(:span, :class=>"term"){t.name} + content_tag(:span, :class=>"tip"){t.definition}})
     end
     output = project.actors.inject(output) do |result, a|
-      result.gsub(/#{a.name}/, link_to(a.name, project_actor_path(project, a), :title => a.description, :class => "term"))
+      result.gsub(/#{a.name}/, link_to(a.name, project_features_path(project, :actor_id => a.id), :title => a.name, :class => "term"))
     end
     output.gsub!(/#(\d+)/){ link_to("##{$1}", project_feature_path(project, $1), :class => "term") }
     output

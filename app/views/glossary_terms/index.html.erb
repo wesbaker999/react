@@ -1,6 +1,0 @@
-<%content_for(:sidebar) do %>
-<a href="<%=new_project_glossary_term_path(@project)%>" class="button large action"><span>New Term</span></a>
-<% end %>
-<ul id="terms">
-  <%= render :partial => "term", :collection => @terms %>
-</ul>

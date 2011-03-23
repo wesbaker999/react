@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     @tab="settings"
     if @project.update_attributes(params[:project])
       flash[:notice] = "Project updated"
-      redirect_to project_path(@project) and return
+      redirect_to edit_project_path(@project) and return
     end
     render :action => :edit
   end

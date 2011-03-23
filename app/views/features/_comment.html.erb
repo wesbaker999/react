@@ -1,4 +1,4 @@
 <li class="comment">
   <div class="body"><%= simple_format(link_feature_terms_by_string(comment.body, comment.feature.project)) %></div>
-  <div class="byline">Posted by: <strong><%= comment.user.name %></strong> at <%= comment.created_at.to_s(:day_time) %></div>
+  <div class="byline"><strong><%= comment.user.name %></strong> at <%= comment.created_at.to_s(:day_time) %></div>
 </li>

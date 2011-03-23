@@ -34,10 +34,21 @@ class FeaturesController < ApplicationController
     else
       @unsigned = "false"
     end
+    if !params[:actor_id].blank?
+      actor_id = params[:actor_id].to_i
+      scope = scope.for_actor_id(actor_id) if actor_id > 0
+      @actor_id = actor_id
+    else
+      @actor_id = nil
+    end
     cookies["project_#{@project.id}_sort"] = @sort
     cookies["project_#{@project.id}_unsigned"] = @unsigned
     @features = scope.all
-    @unsigned_count = @project.features.unsigned_for(@membership).count
+    if @actor_id && (@actor_id > 0)
+      @unsigned_count = @project.features.for_actor_id(@actor_id).unsigned_for(@membership).count
+    else
+      @unsigned_count = @project.features.unsigned_for(@membership).count
+    end
     @subtab = "Recent Activity"
     respond_to do |format|
       format.html {}
@@ -113,13 +124,13 @@ class FeaturesController < ApplicationController
 
   def load_feature
     @feature = @project.features.find_by_project_feature_id(params[:id]) unless params[:id].blank?
-    @meta_title << " - ##{@feature.project_feature_id}: #{@feature.title}" if @feature
+    @meta_title << "##{@feature.project_feature_id}: #{@feature.title}" if @feature
   end
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
     @membership = @project.memberships.for_user(current_user).first unless @project.blank?
-    @meta_title << " - #{@project.name}" if @project
+    @meta_title << @project.name if @project
   end
 
   def load_counts

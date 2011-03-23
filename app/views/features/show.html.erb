@@ -1,23 +1,11 @@
-<% content_for(:sidebar) do %>
-
-<div class="inner">
-    <ul class="actions">
-        <li><a href="<%=edit_project_feature_path(@project,@feature)%>" class="button large black"><span>Edit Feature</span></a></li>
-        <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete Feature</span></a></li>
+<div feature-id="<%=@feature.id%>" project-id="<%=@project.id%>" class="feature inner">
+      <ul class="actions">
+        <li><a href="<%=edit_project_feature_path(@project,@feature)%>" class="button"><span>Edit</span></a></li>
+        <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete</span></a></li>
     </ul>
-<% if @feature.updated_by %>
-    <div>
-      Last updated by:<br/>
-      <%=@feature.updated_by.name%><br/>
-      <%=@feature.updated_at.to_s(:day_time)%>
-    </div>
-<% end %>
-</div>
-<% end %>
-<div class="feature inner">
 <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
 <div class="description">
-  <div class="as_a"><%=as_a_or_an(@feature.actor.name)%> <%=link_to @feature.actor.name, project_actor_path(@project,@feature.actor)%></div>
+  <div class="as_a"><%=as_a_or_an(@feature.actor.name)%> <%=link_to @feature.actor.name, project_features_path(@project,:actor_id => @feature.actor.id)%></div>
   <%=simple_format(link_feature_terms(@feature))%>
 </div>
 

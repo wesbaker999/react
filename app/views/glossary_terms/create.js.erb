@@ -1,0 +1,6 @@
+<%if @term.persisted?%>
+$("#glossary ul").html("<%= escape_javascript(render(:partial => "glossary_terms/term", :collection => @project.glossary_terms.alphabetical))%>");
+$("#add_term").hide();
+<% else%>
+alert("Name and definition are required.");
+<% end%>

@@ -1,0 +1,6 @@
+<option value=""></option>
+<% @project.actors.alphabetical.each do |a|%>
+<option value="<%=a.id%>" <% if a.id == @actor.id%>selected="selected"<%end%>><%=a.name%></option>
+<% end%>
+<option value="">----------</option>
+<option value="0">Add Actor</option>

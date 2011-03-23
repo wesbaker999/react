@@ -32,25 +32,71 @@ $(function(){
          $("#header a.current_project").removeClass("hover");
     });
     document.cookie = "tzoffset=" + new Date().getTimezoneOffset() + ";path=/";
-    $("#story_bar_search #q").keyup(function(e){
+    $("#feature_bar_search #q").keyup(function(e){
         clearTimeout(_search_timer);
-        _search_timer = setTimeout(function() {  $("#story_bar_search").submit(); }, 300);
+        _search_timer = setTimeout(function() {  $("#feature_bar_search").submit(); }, 300);
     });
-    $("#story_bar .sort a").click(function(){
+    $("#feature_bar .sort a").click(function(){
         if($("#sort").val() == "asc"){
             $("#sort").val("desc");
         }else{
             $("#sort").val("asc");
         }
-        $("#story_bar_search").submit();
+        $("#feature_bar_search").submit();
     });
-    $("#story_bar .unsigned a").click(function(){
+    $("#feature_bar .unsigned a").click(function(){
         if($("#unsigned").val() == "true"){
             $("#unsigned").val("false");
         }else{
             $("#unsigned").val("true");
         }
-        $("#story_bar_search").submit();
+        $("#feature_bar_search").submit();
+    });
+    $("#feature_bar #actor_id").change(function(){
+        $("#feature_bar_search").submit();
+    });
+    $("#feature_actor_id").change(function(){
+        if($(this).val() == "0"){
+            var _actor_name = prompt("Define new Actor:","");
+            if(_actor_name){
+                var _project_id = $("form").attr("project-id");
+                $.ajax({
+                    url: "/projects/"+_project_id+"/actors",
+                    data: {"actor[name]" : _actor_name},
+                    dataType: "script",
+                    type: "POST",
+                    async: false
+                });
+            }else{
+                $("#feature_actor_id").val("");
+            }
+        }
+    });
+    $("#glossary_tab").click(function(){
+        $("#glossary").toggle("slide", { direction: "right" }, 300);
+        return false;
+    });
+    $("#add_term_button").click(function(){
+        $("#add_term").show("slide", { direction: "right" }, 200);
+        return false;
+    });
+    $("#add_term a.cancel").click(function(){
+        $("#add_term").fadeOut();
+        return false;
+    });
+    $('body').click(function() {
+        if($("#glossary").is(":visible")){
+            $("#glossary").hide("slide", { direction: "right" }, 300);
+        }
+    });
+     $('#glossary').click(function(event){
+         event.stopPropagation();
+     });
+    $(".term_container .term").hover(function(){
+        $(this).next().show();
+    },
+    function(){
+        $(this).next().hide();
     });
 });
 

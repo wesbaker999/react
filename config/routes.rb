@@ -46,5 +46,5 @@ React::Application.routes.draw do
   get 'settings' => 'users#edit'
   put 'settings' => 'users#update'
 
-  root :to => "user_sessions#new"
+  root :to => "react#index"
 end

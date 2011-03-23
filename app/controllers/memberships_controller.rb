@@ -10,7 +10,7 @@ class MembershipsController < ApplicationController
     if request.put?
       if @project.update_attributes(params[:project])
         flash[:notice] = "Memberships updated"
-        redirect_to project_memberships_path(@project) and return
+        redirect_to edit_project_path(@project) and return
       else
         render :action => "index"
       end

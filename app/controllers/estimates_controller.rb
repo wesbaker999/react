@@ -69,7 +69,7 @@ class EstimatesController < ApplicationController
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
     @membership = @project.memberships.for_user(current_user).first unless @project.blank?
-    @meta_title << " - #{@project.name}" if @project
+    @meta_title << @project.name if @project
   end
 
   def new_estimate

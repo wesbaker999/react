@@ -1,4 +1,4 @@
-<%=errors_for @term %>
+<%=errors_for @term if @term %>
 <div class="field">
 <%=f.label :name%>
 <%=f.text_field :name%>

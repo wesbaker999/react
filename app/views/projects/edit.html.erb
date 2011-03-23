@@ -1,4 +1,8 @@
-<div class="inner">
+<%content_for(:sidebar) do %>
+<a href="<%=new_project_invitation_path(@project)%>" class="button large action"><span>New Member</span></a>
+<% end %>
+<div id="project_edit" class="inner">
+  <div class="section">
   <h1>Settings</h1>
   <%=form_for(@project) do |f|%>
   <%=errors_for @project %>
@@ -6,14 +10,74 @@
       <%=f.label :name%>
       <%=f.text_field :name %>
     </div>
-    <%=f.submit "Update", :class => "button" %>
+    <%=f.submit "Save", :class => "button" %>
+  <% end %>
+    </div>
+  <div class="section">
+    <h1>Memberships</h1>
+  <%= form_for @project, :url => project_memberships_path(@project), :method => :put do |f|%>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Admin?</th>
+        <th>Developer?</th>
+        <th>Client?</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+    <%= f.fields_for :memberships do |membership| %>
+          <tr>
+          <td><%=membership.object.user.name%></td>
+            <td><%=membership.object.user.email%></td>
+            <td><%=membership.check_box :admin %><%=membership.hidden_field :id %></td>
+            <td><%=membership.check_box :developer %></td>
+            <td><%=membership.check_box :client %></td>
+            <td><%=link_to "Remove", project_membership_path(@project, membership.object), :method => :delete, :confirm => "Are you sure?" %></td>
+          </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+  <%=f.submit "Update Memberships", :class => "button" %>
   <% end %>
 </div>
-<div class="inner">
+
+  <div class="section">
+    <h1>Invitations</h1>
+    <div id="invitations">
+    <table>
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Admin?</th>
+        <th>Developer?</th>
+        <th>Client?</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @project.invitations.each do |invitation| %>
+          <tr>
+          <td><%=invitation.email%></td>
+            <td><%=invitation.admin? %></td>
+            <td><%=invitation.developer? %></td>
+            <td><%=invitation.client? %></td>
+            <td><%=link_to "Remove", project_invitation_path(@project, invitation), :method => :delete, :confirm => "Are you sure?" %></td>
+          </tr>
+    <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="section">
   <h1>API Key</h1>
   <%=form_for(@project, :url => generate_api_key_project_path(@project)) do |f|%>
   <%=errors_for @project %>
     <div class="field" id="project_api_key"><%= @project.api_key.blank? ? "None" : @project.api_key %></div>
     <%=f.submit "Generate new API key", :class => "button" %>
   <% end %>
+   </div>
 </div>
