@@ -39,8 +39,9 @@
 <div id="content">
   <div id="top_content"><%= content_for?(:content) ? yield(:content) : yield %></div>
   <div id="bottom_content"><%= yield(:bottom_content) %></div>
-  <a id="glossary_tab"><img src="/images/glossary_tab.png"/></a>
 <% if @project %>
+  <a id="glossary_tab"><img src="/images/glossary_tab.png"/></a>
+
   <div id="glossary">
     <ul>
     <%= render :partial => "glossary_terms/term", :collection => @project.glossary_terms.alphabetical %>
