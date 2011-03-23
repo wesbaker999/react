@@ -1,7 +1,9 @@
 <div feature-id="<%=@feature.id%>" project-id="<%=@project.id%>" class="feature inner">
       <ul class="actions">
         <li><a href="<%=edit_project_feature_path(@project,@feature)%>" class="button"><span>Edit</span></a></li>
+        <% if current_admin? %>
         <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete</span></a></li>
+        <% end %>
     </ul>
 <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
 <div class="description">

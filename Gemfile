@@ -17,13 +17,11 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
-group :cucumber do
+group :test, :cucumber do
   gem 'rcov'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
   gem 'cucumber'
-  gem 'rspec-rails'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
 end
