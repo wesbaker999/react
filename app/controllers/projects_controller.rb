@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_filter :load_project
 
+  before_filter :require_admin, :except => [:index, :new, :create]
+
   before_filter do
     @tab="projects"
   end
@@ -20,11 +22,9 @@ class ProjectsController < ApplicationController
    end
 
   def edit
-     @tab="settings"
   end
 
   def update
-    @tab="settings"
     if @project.update_attributes(params[:project])
       flash[:notice] = "Project updated"
       redirect_to edit_project_path(@project) and return
@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
   end
 
   def generate_api_key
-    @tab="settings"
     if @project.generate_api_key!
       flash[:notice] = "API key generated"
       redirect_to edit_project_path(@project) and return
@@ -54,5 +53,9 @@ class ProjectsController < ApplicationController
   def load_project
     @project = Project.find(params[:id]) unless params[:id].blank?
     @membership = @project.memberships.for_user(current_user).first unless @project.blank?
+  end
+
+  def require_admin
+    redirect_to project_features_path(@project) and return false unless @membership.admin?
   end
 end

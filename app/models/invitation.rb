@@ -18,6 +18,6 @@ class Invitation < ActiveRecord::Base
   protected
 
   def set_uuid
-    self.uuid = UUIDTools::UUID.random_create
+    self.uuid = UUIDTools::UUID.random_create.to_s
   end
 end

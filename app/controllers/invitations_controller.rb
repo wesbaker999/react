@@ -1,7 +1,8 @@
 class InvitationsController < ApplicationController
   before_filter :load_project
+  before_filter :load_membership, :except => [:show, :accept]
   before_filter :load_invitation
-  skip_before_filter :login_required, :only => [:new,:show]
+  skip_before_filter :login_required, :only => [:show]
 
   def new
     @invitation = @project.invitations.new
@@ -10,19 +11,19 @@ class InvitationsController < ApplicationController
   def create
     @invitation = @project.invitations.create(params[:invitation])
     if @invitation.id.blank?
-      flash[:notice] = "Invitation to this email address already exists"
+      render :action => :new
     else
       flash[:notice] = "Invitation sent to #{@invitation.email}"
       InvitationMailer.invitation(@invitation).deliver
-
+       redirect_to edit_project_path(@project)
     end
-    redirect_to project_memberships_path(@project)
+   
   end
 
   def destroy
     @invitation.destroy
     flash[:notice] = "Invitation removed"
-    redirect_to project_memberships_path(@project)
+    redirect_to edit_project_path(@project)
   end
 
   def show
@@ -56,6 +57,11 @@ class InvitationsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
+  end
+
+  def load_membership
+    @membership = @project.memberships.for_user(current_user).first if current_user && @project
+    redirect_to project_features_path(@project) and return unless @membership.admin?
   end
 
   def load_invitation

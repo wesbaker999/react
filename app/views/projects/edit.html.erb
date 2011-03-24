@@ -42,7 +42,10 @@
     </table>
 
   <%=f.submit "Update Memberships", :class => "button" %>
+
   <% end %>
+<%=button_to "Add Member", new_project_invitation_path(@project), :class => "button", :method => :get%>
+
 </div>
 
   <div class="section">
@@ -70,6 +73,7 @@
     <% end %>
       </tbody>
     </table>
+      
     </div>
   </div>
   <div class="section">
