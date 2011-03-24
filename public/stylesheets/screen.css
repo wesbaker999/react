@@ -376,6 +376,10 @@ input[type='submit'].button{
     font-size: small;
 }
 
+#feature_actor_name {
+  display: none;
+}
+
 div.feature div.description{
     font-size: x-large;
     margin: 1em 0;

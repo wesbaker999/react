@@ -2,6 +2,7 @@ class FeaturesController < ApplicationController
   before_filter :load_project
   before_filter :load_feature
   before_filter :load_counts
+  before_filter :create_new_actor, :only => [:create, :update]
 
   helper :glossary_terms
 
@@ -136,5 +137,12 @@ class FeaturesController < ApplicationController
   def load_counts
     @unsigned_count = @project.features.unsigned_for(@membership).count
     @signed_count = @project.features.signed.count
+  end
+
+  def create_new_actor
+    if params[:feature][:actor_id] == "0" && params[:feature_actor_name].present?
+      params[:feature].delete(:actor_id)
+      @feature.actor = @project.actors.create(:name => params[:feature_actor_name])
+    end
   end
 end

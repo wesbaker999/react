@@ -57,19 +57,9 @@ $(function(){
     });
     $("#feature_actor_id").change(function(){
         if($(this).val() == "0"){
-            var _actor_name = prompt("Define new Actor:","");
-            if(_actor_name){
-                var _project_id = $("form").attr("project-id");
-                $.ajax({
-                    url: "/projects/"+_project_id+"/actors",
-                    data: {"actor[name]" : _actor_name},
-                    dataType: "script",
-                    type: "POST",
-                    async: false
-                });
-            }else{
-                $("#feature_actor_id").val("");
-            }
+          $("#feature_actor_name").show();
+        } else {
+          $("#feature_actor_name").hide();
         }
     });
     $("#glossary_tab").click(function(){
