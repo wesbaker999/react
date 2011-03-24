@@ -9,11 +9,23 @@
   
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17928951-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </head>
 <body>
 <div id="container">
 <div id="header">
-  <h1><% if @project && @project.persisted? %><a href="<%=project_path(@project)%>" class="current_project"><%=@project.name%></a><% else %><a href="/">REACT</a><% end %><% if @project && @membership && @membership.admin?%><%=link_to(image_tag("gear.png"), edit_project_path(@project), :title => "Project Settings", :class=>"project_settings")%><%end%></h1>
+  <h1><% if @project && @project.persisted? %><a href="<%=project_path(@project)%>" class="current_project"><%=@project.name%></a><% else %><a href="/">REACT</a><% end %></h1>
   <ul class="projects">
     <% if @project && @project.persisted? %>
     <% current_user.projects.except(@project).alphabetical.each do |project| %>
@@ -32,6 +44,7 @@
 <%end%>
 </ul>
 <% if @project && @project.persisted?%>
+<% if @project && @membership && @membership.admin?%><%=link_to(image_tag("gear.png"), edit_project_path(@project), :title => "Project Settings", :class=>"project_settings")%><%end%>
 <a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span>ADD FEATURE</span></a>
 <% elsif @projects %>
 <a href="<%=new_project_path%>" class="button action" id="add_project"><span>ADD PROJECT</span></a>

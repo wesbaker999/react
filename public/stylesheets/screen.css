@@ -63,12 +63,13 @@ a:visited{
 #header{
     position:relative;
     height: 84px;
-    line-height: 84px;
+
 }
 
 #header h1{
     font-weight:300;
     font-size: 40px;
+     line-height: 84px;
 }
 
 #header h1 a{
@@ -146,9 +147,8 @@ a:visited{
 
 #header a.project_settings{
     position: absolute;
-    top: 3px;
-    left: 0;
-    margin-left: -40px;
+    top: 40px;
+    right: 170px;
 }
 
 /** Content **/
@@ -163,7 +163,7 @@ a:visited{
 
 #content{
     text-rendering: optimizelegibility;
-    min-height:400px;
+    min-height:300px;
 }
 
 #content h1 {
@@ -711,10 +711,8 @@ ul.simple-list li a:hover{
     position: absolute;
     top: 40px;
     right: 0;
-}
-
-#add_feature span, #add_project span{
-    padding: 0 3em;
+    text-align: center;
+    width: 160px;
 }
 
 #features, #projects{

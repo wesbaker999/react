@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_timezone
+    Time.zone = current_user.time_zone and return if current_user && !current_user.time_zone.blank?
     unless cookies[:tzoffset].blank?
       Time.zone = ActiveSupport::TimeZone[-cookies[:tzoffset].to_i.minutes]
     end

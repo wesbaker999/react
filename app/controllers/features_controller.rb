@@ -142,7 +142,7 @@ class FeaturesController < ApplicationController
   def create_new_actor
     if params[:feature][:actor_id] == "0" && params[:feature_actor_name].present?
       params[:feature].delete(:actor_id)
-      @feature.actor = @project.actors.create(:name => params[:feature_actor_name])
+      params[:feature][:actor_id] = @project.actors.create(:name => params[:feature_actor_name]).id
     end
   end
 end
