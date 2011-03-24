@@ -6,31 +6,32 @@ Feature: "#2 Projects"
   Scenario: Create a project
     Given I am logged in
       And I am on the projects page
-    When I click "New Project"
+    When I click "ADD PROJECT"
     Then I should see "New Project"
     When I fill in "project[name]" with "Blog"
       And I check "developer"
       And I press "Create"
     Then I should see "Blog"
-      And I should see "New Feature"
+      And I should see "ADD FEATURE"
 
   Scenario: Edit project name
     Given I am logged in
-      And there is a project called "Blog"
-      And I am an "admin" on the project called "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Settings" within "#sidebar"
+      And there is a project "Blog"
+      And I am an "admin" on the project "Blog"
+      And I am on the projects page
+    When I click "Blog"
+      And I click element "#header .project_settings"
       And I fill in "project[name]" with "CMS"
-      And I press "Update"
-    Then I should see "CMS"
-      And I should not see "Blog"
+      And I press "Save"
+    Then I should see "Project updated"
+      And I should see "CMS" within "#header h1"
 
-  Scenario: Generate project API key
+  Scenario: Generate new project API key
     Given I am logged in
-      And there is a project called "Blog"
-      And I am an "admin" on the project called "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Settings" within "#sidebar"
+      And there is a project "Blog"
+      And I am an "admin" on the project "Blog"
+      And I am on the projects page
+    When I click "Blog"
+      And I click element "#header .project_settings"
       And I press "Generate new API key"
-    Then I should see "API key generate"
-      And I should not see "None" within "#project_api_key"
+    Then I should see "API key generated"

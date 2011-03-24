@@ -1,5 +1,4 @@
 require 'rspec/rails'
 
-Before do
-  ActionMailer::Base.deliveries.clear
-end
+Capybara.default_driver = :selenium
+Cucumber::Rails::World.use_transactional_fixtures = false

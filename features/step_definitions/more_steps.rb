@@ -8,16 +8,11 @@ Given /^(?:|I )am logged in$/ do
   page.should have_content("Sign out")
 end
 
-Given /^there is a project called "([^"]+)"/ do |name|
+Given /^there is a project "([^"]+)"/ do |name|
   Factory.create(:project, :name => name)
 end
 
-Given /^I am viewing the project called "([^"]+)"/ do |name|
-  project = Project.where(:name => name).first
-  visit project_path(project)
-end
-
-Given /^I am a(?:n?) "([^"]+)" on the project called "([^"]+)"/ do |role, name|
+Given /^I am a(?:n?) "([^"]+)" on the project "([^"]+)"/ do |role, name|
   project = Project.where(:name => name).first
   project.memberships.create!(:user => @user, role => true)
 end
@@ -67,6 +62,10 @@ Given /^I have been invited with "([^"]+)" as a "([^"]+)" to the project "([^"]+
   project = Project.where(:name => project_name).first
   project.invitations.create!(:email => email,
                               role_name => true)
+end
+
+When /^(?:|I )click element "([^"]*)"$/ do |selector|
+  page.find(selector).click
 end
 
 When /^(?:|I )click "([^"]*)" within "([^"]*)"$/ do |link, selector|
