@@ -1,14 +1,5 @@
-<% content_for(:sidebar) do %>
-<div class="inner">
-  <ul class="actions">
-<li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_glossary_term_path(@project,@term)%>" class="button red"><span>Delete Term</span></a></li>
-      </ul>
-</div>
+<h1>Edit Term</h1>
+<%=form_for @term, :url => project_glossary_term_path(@project, @term), :method=>:put, :remote => true do |f|%>
+  <%=render :partial => "fields", :locals => {:f =>f}%>
+  <%=f.submit "Update", :class=> "button action"%> or <%=link_to "Cancel", "", :class=>"cancel"%>
 <% end %>
-<div class="inner">
-<h1><%=@term.name%></h1>
-<%=form_for @term, :url => project_glossary_term_path(@project, @term), :method=>:put do |f|%>
-<%=render :partial => "fields", :locals => {:f =>f}%>
-    <%=f.submit "Update", :class=> "button"%>
-<% end %>
-</div>

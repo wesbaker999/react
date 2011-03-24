@@ -747,6 +747,9 @@ ul.simple-list li a:hover{
 #glossary .definition{
     font-size: small;
 }
+#glossary .term {
+  float: left;
+}
 
 #glossary a{
     color: #fff;
@@ -755,6 +758,11 @@ ul.simple-list li a:hover{
 #glossary a.button{
     width: 240px;
     margin: 10px;
+}
+
+#glossary a.edit_term {
+  float: right;
+  font-size: small;
 }
 
 #glossary_tab{
@@ -769,7 +777,7 @@ ul.simple-list li a:hover{
     cursor: pointer;
 }
 
-#add_term {
+#add_term, #edit_term {
     display: none;
     position: absolute;
     height: 350px;

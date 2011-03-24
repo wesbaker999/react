@@ -27,15 +27,22 @@ class GlossaryTermsController < ApplicationController
    end
 
   def edit
-
+    render :layout => false
   end
 
   def update
-    if @term.update_attributes(params[:glossary_term])
-      flash[:notice] = "Term updated"
-      redirect_to project_glossary_term_path(@project, @term) and return
+    respond_to do |format|
+      format.html {
+        if @term.update_attributes(params[:glossary_term])
+          flash[:notice] = "Term updated"
+          redirect_to project_glossary_term_path(@project, @term) and return
+        end
+        render :action => :edit
+      }
+      format.js {
+        @term.update_attributes(params[:glossary_term])
+      }
     end
-    render :action => :edit
   end
 
   def destroy

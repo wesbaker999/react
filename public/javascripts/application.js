@@ -84,6 +84,22 @@ $(function(){
         $("#add_term").fadeOut();
         return false;
     });
+  $("#glossary .edit_term").click(function(){
+    $.ajax({
+      url: $(this).attr("href"),
+      type: "GET",
+      async: false,
+      success: function(html) {
+        $("#edit_term").html(html);
+        $("#edit_term a.cancel").click(function(){
+          $("#edit_term").fadeOut();
+          return false;
+        });
+      }
+    });
+    $("#edit_term").show("slide", { direction: "right" }, 200);
+    return false;
+  });
     $('body').click(function() {
         if($("#glossary").is(":visible")){
             $("#glossary").hide("slide", { direction: "right" }, 300);
