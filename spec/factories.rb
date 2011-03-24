@@ -12,5 +12,4 @@ end
 
 Factory.define(:actor) do |a|
   a.name "User"
-  a.description "Someone who does stuff"
 end
