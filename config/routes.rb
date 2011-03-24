@@ -6,6 +6,7 @@ React::Application.routes.draw do
       post :accept
     end
   end
+  resources :password_resets, :only => [ :new, :create, :edit, :update ]
   resources :projects do
     resources :actors
     resources :memberships
