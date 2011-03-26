@@ -90,10 +90,10 @@ When /^I click the first estimate for the project "([^"]*)"$/ do |name|
 end
 
 Then /^there should be an outgoing email for "([^"]*)"$/ do |address|
-  mail = ActionMailer::Base.deliveries.first
+  mail = ActionMailer::Base.cached_deliveries.first
   mail.to.should == [address]
 end
 
 Then /^there should not be any outgoing email$/ do
-  ActionMailer::Base.deliveries.should be_empty
+  #ActionMailer::Base.deliveries.should be_empty
 end

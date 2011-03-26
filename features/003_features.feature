@@ -5,10 +5,11 @@ Feature: "#3 Features"
 
   Scenario: Create a feature
     Given I am logged in
-      And there is a project called "Blog"
-      And I am a "developer" on the project called "Blog"
-      And I am viewing the project called "Blog"
-    When I click "New Feature"
+      And there is a project "Blog"
+      And I am a "developer" on the project "Blog"
+      And I am on the projects page
+    When I click "Blog"
+      And I click "ADD FEATURE"
       And I fill in "feature[title]" with "Posts"
       And I select "User" from "feature[actor_id]"
       And I fill in "feature[description]" with "I want to write some stuff"
@@ -18,23 +19,25 @@ Feature: "#3 Features"
 
   Scenario: View a feature
     Given I am logged in
-      And there is a project called "Blog"
-      And I am a "client" on the project called "Blog"
+      And there is a project "Blog"
+      And I am a "client" on the project "Blog"
       And there is a feature "Comments" on the project "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Comments"
+      And I am on the projects page
+    When I click "Blog"
+      And I click "Comments"
     Then I should see "Comments"
       And I should see "As a User"
       And I should see "I want to do stuff"
 
   Scenario: Sign off a feature
     Given I am logged in
-      And there is a project called "Blog"
-      And I am a "client" on the project called "Blog"
+      And there is a project "Blog"
+      And I am a "client" on the project "Blog"
       And there is a "developer" "Bob" on the project "Blog"
       And there is a feature "Comments" on the project "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Comments"
+      And I am on the projects page
+    When I click "Blog"
+      And I click "Comments"
       And I press "Sign off as Client"
     Then I should see "Joe" within ".signatures .client"
       And there should be an outgoing email for "bob@example.com"
