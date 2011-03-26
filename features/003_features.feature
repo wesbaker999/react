@@ -44,12 +44,13 @@ Feature: "#3 Features"
 
   Scenario: Edit a feature
     Given I am logged in
-      And there is a project called "Blog"
-      And I am a "developer" on the project called "Blog"
+      And there is a project "Blog"
+      And I am a "developer" on the project "Blog"
       And there is a "client" "Dave" on the project "Blog"
       And there is a feature "Comments" on the project "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Comments"
+      And I am on the projects page
+    When I click "Blog"
+      And I click "Comments"
       And I click "Edit Feature"
       And I fill in "feature[description]" with "I want to write stuff"
       And I press "Update"

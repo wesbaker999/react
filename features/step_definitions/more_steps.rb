@@ -95,5 +95,5 @@ Then /^there should be an outgoing email for "([^"]*)"$/ do |address|
 end
 
 Then /^there should not be any outgoing email$/ do
-  #ActionMailer::Base.deliveries.should be_empty
+  ActionMailer::Base.cached_deliveries.should be_empty
 end

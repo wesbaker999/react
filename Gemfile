@@ -24,4 +24,5 @@ group :test, :cucumber do
   gem 'cucumber'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
+  gem 'mongrel', '1.2.0.pre2'
 end

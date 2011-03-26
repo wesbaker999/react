@@ -16,6 +16,7 @@ module Mail
     attr_accessor :settings
 
     def deliver!(mail)
+      deliveries = []
       File.open(DELIVERIES_CACHE_PATH,'r') do |f|
         deliveries=Marshal.load(f)
       end
