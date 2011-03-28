@@ -54,8 +54,7 @@ end
 
 Given /^there is an actor "([^"]+)" on the project "([^"]+)"/ do |actor_name, project_name|
   project = Project.where(:name => project_name).first
-  project.actors.create!(:name => actor_name,
-                         :description => "Some guy")
+  project.actors.create!(:name => actor_name)
 end
 
 Given /^I have been invited with "([^"]+)" as a "([^"]+)" to the project "([^"]+)"$/ do |email, role_name, project_name|
