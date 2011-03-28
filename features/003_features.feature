@@ -74,21 +74,6 @@ Feature: "#3 Features"
       And I should not see "Joe" within ".signatures .developer"
       And there should not be any outgoing email
 
-  Scenario: View an actor's stories from a feature
-    Given I am logged in
-      And there is a project "Blog"
-      And I am a "client" on the project "Blog"
-      And there is an actor "Customer" on the project "Blog"
-      And there is an actor "Admin" on the project "Blog"
-      And there is a feature "Comments" for actor "Customer" on the project "Blog"
-      And there is a feature "Management" for actor "Admin" on the project "Blog"
-      And I am on the projects page
-    When I click "Blog"
-      And I click "Comments"
-      And I click "Customer" within "#content .description"
-    Then I should see "Comments"
-      And I should not see "Management"
-
   Scenario: Comment on a feature
     Given I am logged in
       And there is a project "Blog"
