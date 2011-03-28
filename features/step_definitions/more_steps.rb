@@ -68,8 +68,7 @@ end
 
 Given /^there is an actor "([^"]+)" on the project "([^"]+)"/ do |actor_name, project_name|
   project = Project.where(:name => project_name).first
-  project.actors.create!(:name => actor_name,
-                         :description => "Some guy")
+  project.actors.create!(:name => actor_name)
 end
 
 Given /^I have been invited with "([^"]+)" as a "([^"]+)" to the project "([^"]+)"$/ do |email, role_name, project_name|
@@ -101,6 +100,11 @@ end
 When /^I click the first estimate for the project "([^"]*)"$/ do |name|
   project = Project.where(:name => name).first
   click_link("view_estimate_#{project.estimates.first.id}")
+end
+
+# NOTE - you must call this step BEFORE the step that generates the dialog
+When /^I accept the confirmation dialog$/ do
+  page.evaluate_script("window.confirm = function() { return true; }")
 end
 
 Then /^there should be an outgoing email for "([^"]*)"$/ do |address|

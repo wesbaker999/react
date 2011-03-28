@@ -6,3 +6,7 @@ Capybara.server do |app, port|
   require 'rack/handler/mongrel'
   Rack::Handler::Mongrel.run(app, :Port => port)
 end
+
+Before do
+  ActionMailer::Base.clear_cache
+end
