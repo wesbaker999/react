@@ -21,7 +21,7 @@
     <% if @feature.developer_signature %>
     <h2><%=@feature.developer_signature.user.name%></h2>
     <%else%>
-        <% if @membership.developer %>
+        <% if @membership && @membership.developer %>
         <%=button_to "Sign off as Developer", developer_sign_project_feature_path(@project, @feature), :method => :put, :class => "button large"%>
         <% end %>
     <% end %>
@@ -34,7 +34,7 @@
     <% if @feature.client_signature %>
     <h2><%=@feature.client_signature.user.name%></h2>
     <%else%>
-        <% if @membership.client %>
+        <% if @membership && @membership.client %>
             <%=button_to "Sign off as Client", client_sign_project_feature_path(@project, @feature), :method => :put, :class => "button large"%>
         <% end %>
     <% end %>

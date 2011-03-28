@@ -1,10 +1,8 @@
 class MembershipsController < ApplicationController
   before_filter :load_project
+  before_filter :require_membership
+  before_filter :require_membership_admin
   before_filter :load_membership
-
-  before_filter do
-    @tab="members"
-  end
 
   def index
     if request.put?
@@ -60,6 +58,7 @@ class MembershipsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
-    @membership = @project.memberships.for_user(current_user).first unless @project.blank?
+    render_not_found and return unless @project
+    @membership = @project.memberships.for_user(current_user).first
   end
 end

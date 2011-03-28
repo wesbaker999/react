@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_filter :load_project
-
-  before_filter :require_admin, :except => [:index, :show, :new, :create]
+  before_filter :require_project, :only => [:edit, :update, :generate_api_key, :show]
+  before_filter :require_membership, :only => [:edit, :update]
+  before_filter :require_membership_admin, :except => [:index, :show, :new, :create]
 
   skip_before_filter :login_required, :only =>[:show]
 
@@ -39,7 +40,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    render_not_found and return unless @project
     redirect_to root_url and return if !current_user and !@project.public?
     redirect_to project_features_path(@project)
   end
@@ -52,10 +52,10 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:id]) unless params[:id].blank?
-    @membership = @project.memberships.for_user(current_user).first if @project && current_user
+    @membership = @project.memberships.for_user(current_user).first if current_user && @project
   end
 
-  def require_admin
-    redirect_to project_features_path(@project) and return false unless @membership.admin?
+  def require_project
+    render_not_found and return unless @project
   end
 end

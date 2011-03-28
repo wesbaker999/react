@@ -1,6 +1,7 @@
 class ActorsController < ApplicationController
   before_filter :load_project
   before_filter :load_actor
+  before_filter :require_membership
 
   def new
      @actor = @project.actors.new
@@ -48,7 +49,8 @@ class ActorsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
-    @membership = @project.memberships.for_user(current_user).first unless @project.blank?
-    @meta_title << @project.name if @project
+    render_not_found and return unless @project
+    @membership = @project.memberships.for_user(current_user).first
+    @meta_title << @project.name 
   end
 end

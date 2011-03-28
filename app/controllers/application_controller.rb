@@ -48,5 +48,19 @@ class ApplicationController < ActionController::Base
 
    def render_not_found
     render :file => "public/404.html", :layout => false, :status => 404
+   end
+
+  def require_membership
+    unless @membership
+      flash[:notice] = "Membership required"
+      redirect_to root_url
+    end
+  end
+
+  def require_membership_admin
+    unless @membership.admin?
+      flash[:notice] = "You must be an Administrator to access this page"
+      redirect_to project_path(@project)
+    end
   end
 end

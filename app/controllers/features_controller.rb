@@ -3,6 +3,7 @@ class FeaturesController < ApplicationController
   before_filter :load_feature
   before_filter :load_counts
   before_filter :create_new_actor, :only => [:create, :update]
+  before_filter :require_membership, :except => [:index, :show]
 
   helper :glossary_terms
 

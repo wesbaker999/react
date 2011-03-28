@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :load_project
+  before_filter :require_project, :except => [:show, :accept]
   before_filter :load_membership, :except => [:show, :accept]
   before_filter :load_invitation
   skip_before_filter :login_required, :only => [:show]
@@ -59,9 +60,12 @@ class InvitationsController < ApplicationController
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
   end
 
+  def require_project
+    render_not_found and return unless @project
+  end
+
   def load_membership
-    @membership = @project.memberships.for_user(current_user).first if current_user && @project
-    redirect_to project_features_path(@project) and return unless @membership.admin?
+    @membership = @project.memberships.for_user(current_user).first if current_user
   end
 
   def load_invitation

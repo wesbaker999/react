@@ -1,6 +1,7 @@
 class GlossaryTermsController < ApplicationController
   before_filter :load_project
   before_filter :load_term
+  before_filter :require_membership
 
   def new
      @term = @project.glossary_terms.new
@@ -55,7 +56,8 @@ class GlossaryTermsController < ApplicationController
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
-    @membership = @project.memberships.for_user(current_user).first unless @project.blank?
+    render_not_found and return unless @project
+    @membership = @project.memberships.for_user(current_user).first
     if @project
       @meta_title << "Glossary"
       @meta_title << @project.name
