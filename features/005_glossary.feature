@@ -5,27 +5,26 @@ Feature: "#5 Glossary"
 
   Scenario: Create a term
     Given I am logged in
-      And there is a project called "Blog"
-      And I am a "developer" on the project called "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Glossary" within "#sidebar"
-      And I click "New Term"
+      And there is a project "Blog"
+      And I am a "developer" on the project "Blog"
+      And I am on the projects page
+    When I click "Blog"
+      And I click element "#glossary_tab img"
+      And I click element "#add_term_button"
       And I fill in "glossary_term[name]" with "Homepage"
       And I fill in "glossary_term[definition]" with "The place where everything goes"
       And I press "Create"
-    Then I should see "Term created"
-      And I should see "Homepage"
+    Then I should see "Homepage" within "#glossary"
 
   Scenario: Edit a term
     Given I am logged in
-      And there is a project called "Blog"
+      And there is a project "Blog"
       And there is a term "Homepage" on the project "Blog"
-      And I am a "developer" on the project called "Blog"
-      And I am viewing the project called "Blog"
-    When I click "Glossary" within "#sidebar"
-      And I click "Homepage"
-      And I click "Edit Term"
+      And I am a "developer" on the project "Blog"
+      And I am on the projects page
+    When I click "Blog"
+      And I click element "#glossary_tab img"
+      And I click "edit" within "#glossary ul li:first-child"
       And I fill in "glossary_term[definition]" with "The page where the posts are"
       And I press "Update"
-    Then I should see "Term updated"
-      And I should see "Homepage"
+    Then I should see "The page where the posts are" within "#glossary"

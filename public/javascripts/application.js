@@ -85,9 +85,9 @@ $(function(){
           $("#edit_term").fadeOut();
           return false;
         });
+        $("#edit_term").show("slide", { direction: "right" }, 200);
       }
     });
-    $("#edit_term").show("slide", { direction: "right" }, 200);
     return false;
   });
     $('body').click(function() {

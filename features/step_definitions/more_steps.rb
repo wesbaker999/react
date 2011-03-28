@@ -88,6 +88,11 @@ When /^I click the first estimate for the project "([^"]*)"$/ do |name|
   click_link("view_estimate_#{project.estimates.first.id}")
 end
 
+# NOTE - you must call this step BEFORE the step that generates the dialog
+When /^I accept the confirmation dialog$/ do
+  page.evaluate_script("window.confirm = function() { return true; }")
+end
+
 Then /^there should be an outgoing email for "([^"]*)"$/ do |address|
   mail = ActionMailer::Base.cached_deliveries.first
   mail.to.should == [address]
