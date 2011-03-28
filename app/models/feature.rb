@@ -36,6 +36,7 @@ class Feature < ActiveRecord::Base
   }
   scope :for_actor_id, lambda {|id| {:conditions => {:actor_id => id}}}
   scope :signed, {:conditions => "developer_signature_id IS NOT NULL AND client_signature_id IS NOT NULL"}
+  scope :unsigned, {:conditions => "developer_signature_id IS NULL OR client_signature_id IS NULL"}
   scope :search, lambda {|q| {:conditions => ["features.title LIKE ? OR features.description LIKE ?", "%#{q}%", "%#{q}%"]}}
 
   def to_param

@@ -10,6 +10,11 @@
       <%=f.label :name%>
       <%=f.text_field :name %>
     </div>
+    <div class="field">
+      <%=f.check_box :public %>
+      <%=f.label :public, :style=>"display:inline"%>
+
+    </div>
     <%=f.submit "Save", :class => "button" %>
   <% end %>
     </div>

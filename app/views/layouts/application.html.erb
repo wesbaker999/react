@@ -25,7 +25,8 @@
 <body>
 <div id="container">
 <div id="header">
-  <h1><% if @project && @project.persisted? %><a href="<%=project_path(@project)%>" class="current_project"><%=@project.name%></a><% else %><a href="/">REACT</a><% end %></h1>
+  <h1><% if @project && @project.persisted? %><a href="<%=project_path(@project)%>" class="current_project <% if current_user%>logged_in<%end%>"><%=@project.name%></a><% else %><a href="/">REACT</a><% end %></h1>
+  <% if current_user %>
   <ul class="projects">
     <% if @project && @project.persisted? %>
     <% current_user.projects.except(@project).alphabetical.each do |project| %>
@@ -34,6 +35,7 @@
         <li class="new-project"><%=link_to "Projects", projects_path%></li>
     <% end  %>
   </ul>
+  <% end %>
 <ul class="nav">
 <%if current_user %>
 <li><%=link_to current_user.name, "/settings"%></li>
@@ -43,12 +45,14 @@
 <li class="last"><%=link_to "Sign up", "/signup"%></li>
 <%end%>
 </ul>
+<% if current_user%>
 <% if @project && @project.persisted?%>
 <% if @project && @membership && @membership.admin?%><%=link_to(image_tag("gear.png"), edit_project_path(@project), :title => "Project Settings", :class=>"project_settings")%><%end%>
 <a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span>ADD FEATURE</span></a>
 <% elsif @projects %>
 <a href="<%=new_project_path%>" class="button action" id="add_project"><span>ADD PROJECT</span></a>
 <%end%>
+<% end%>
 </div>
 <% if flash[:notice]%><div id="flash"><%=flash[:notice]%></div><% end %>
 <div id="content_container">
@@ -63,7 +67,9 @@
     <ul>
     <%= render :partial => "glossary_terms/term", :collection => @project.glossary_terms.alphabetical %>
     </ul>
+    <%if @membership%>
     <a class="button action" id="add_term_button"><span>ADD TERM</span></a>
+
     <div id="add_term">
       <h1>Add Term</h1>
       <%=form_for :glossary_term, :url => project_glossary_terms_path(@project), :remote => true do |f|%>
@@ -73,6 +79,7 @@
     </div>
     <div id="edit_term">
     </div>
+     <%end %>
   </div>
 <%end %>
 </div>

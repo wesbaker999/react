@@ -2,10 +2,6 @@ class GlossaryTermsController < ApplicationController
   before_filter :load_project
   before_filter :load_term
 
-  before_filter do
-    @tab="terms"
-  end
-
   def new
      @term = @project.glossary_terms.new
   end

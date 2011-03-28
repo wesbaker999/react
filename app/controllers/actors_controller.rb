@@ -2,10 +2,6 @@ class ActorsController < ApplicationController
   before_filter :load_project
   before_filter :load_actor
 
-  before_filter do
-    @tab="actors"
-  end
-
   def new
      @actor = @project.actors.new
   end

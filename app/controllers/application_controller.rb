@@ -45,4 +45,8 @@ class ApplicationController < ActionController::Base
       Time.zone = ActiveSupport::TimeZone[-cookies[:tzoffset].to_i.minutes]
     end
   end
+
+   def render_not_found
+    render :file => "public/404.html", :layout => false, :status => 404
+  end
 end

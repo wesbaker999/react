@@ -35,3 +35,14 @@ Feature: "#2 Projects"
       And I click element "#header .project_settings"
       And I press "Generate new API key"
     Then I should see "API key generated"
+
+  Scenario: Public Project
+    Given I am not logged in
+      And there is a public project "Open"
+      And I visit the project "Open"
+    Then I should see "Open"
+      And I should not see "ADD FEATURE"
+      And I should not see "Sign out"
+      And I should see "Sign in"
+      And I should see "Sign up"
+      And I should not see "ADD TERM"

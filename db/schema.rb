@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324145218) do
+ActiveRecord::Schema.define(:version => 20110327231209) do
 
   create_table "actors", :force => true do |t|
     t.integer  "project_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20110324145218) do
     t.datetime "updated_at"
     t.integer  "project_feature_id_counter", :default => 0
     t.string   "api_key"
+    t.boolean  "public",                     :default => false
   end
 
   create_table "signatures", :force => true do |t|

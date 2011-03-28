@@ -8,8 +8,22 @@ Given /^(?:|I )am logged in$/ do
   page.should have_content("Sign out")
 end
 
+Given /^(?:|I )am not logged in$/ do
+  visit '/signout'
+  page.should have_content("Sign in")
+end
+
 Given /^there is a project "([^"]+)"/ do |name|
   Factory.create(:project, :name => name)
+end
+
+Given /^there is a public project "([^"]+)"/ do |name|
+  Factory.create(:project, :name => name, :public => true)
+end
+
+Given /^I visit the project "([^"]+)"/ do |name|
+  project = Project.where(:name => name).first
+  visit project_path(project)
 end
 
 Given /^I am a(?:n?) "([^"]+)" on the project "([^"]+)"/ do |role, name|

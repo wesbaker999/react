@@ -15,7 +15,7 @@ $(function(){
         e.preventDefault();
         return false;
     });
-    $("#header a.current_project").hover(function(){
+    $("#header a.current_project.logged_in").hover(function(){
         $("#header ul.projects").show();
         $(this).addClass("hover");
     },

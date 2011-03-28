@@ -6,9 +6,7 @@ class FeaturesController < ApplicationController
 
   helper :glossary_terms
 
-  before_filter do
-    @tab="features"
-  end
+  skip_before_filter :login_required, :only => [:index, :show]
 
   def index
     scope = @project.features.scoped
@@ -30,7 +28,7 @@ class FeaturesController < ApplicationController
       params[:unsigned] = cookies["project_#{@project.id}_unsigned"]
     end
     if !params[:unsigned].blank? and (params[:unsigned] == "true")
-      scope = scope.unsigned_for(@membership)
+      scope = scope.unsigned
       @unsigned = "true"
     else
       @unsigned = "false"
@@ -46,9 +44,9 @@ class FeaturesController < ApplicationController
     cookies["project_#{@project.id}_unsigned"] = @unsigned
     @features = scope.all
     if @actor_id && (@actor_id > 0)
-      @unsigned_count = @project.features.for_actor_id(@actor_id).unsigned_for(@membership).count
+      @unsigned_count = @project.features.for_actor_id(@actor_id).unsigned.count
     else
-      @unsigned_count = @project.features.unsigned_for(@membership).count
+      @unsigned_count = @project.features.unsigned.count
     end
     @subtab = "Recent Activity"
     respond_to do |format|
@@ -130,12 +128,14 @@ class FeaturesController < ApplicationController
 
   def load_project
     @project = Project.find(params[:project_id]) unless params[:project_id].blank?
-    @membership = @project.memberships.for_user(current_user).first unless @project.blank?
-    @meta_title << @project.name if @project
+    render_not_found and return unless @project
+    redirect_to root_url and return if !current_user and !@project.public?
+    @meta_title << @project.name
+    @membership = @project.memberships.for_user(current_user).first if current_user
   end
 
   def load_counts
-    @unsigned_count = @project.features.unsigned_for(@membership).count
+    @unsigned_count = @project.features.unsigned_for(@membership).count if @membership
     @signed_count = @project.features.signed.count
   end
 

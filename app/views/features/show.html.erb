@@ -1,10 +1,12 @@
 <div feature-id="<%=@feature.id%>" project-id="<%=@project.id%>" class="feature inner">
-      <ul class="actions">
+  <% if @membership%>
+  <ul class="actions">
         <li><a href="<%=edit_project_feature_path(@project,@feature)%>" class="button"><span>Edit</span></a></li>
         <% if current_admin? %>
         <li><a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="<%=project_feature_path(@project,@feature)%>" class="button red"><span>Delete</span></a></li>
         <% end %>
     </ul>
+   <% end %>
 <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
 <div class="description">
   <div class="as_a"><%=as_a_or_an(@feature.actor.name)%> <%=link_to @feature.actor.name, project_features_path(@project,:actor_id => @feature.actor.id)%></div>
@@ -56,8 +58,10 @@
     <ul id="comments">
       <%= render :partial => "comment", :collection => @feature.comments.latest %>
     </ul>
+    <%if @membership%>
     <%= form_for :comment, :url => comment_project_feature_path(@project, @feature), :html => {:id => "new_comment"} do |f| %>
       <%= f.text_area :body %>
       <%= f.submit "Post Comment", :class => "button " %>
     <% end %>
+    <% end%>
 <% end %>
