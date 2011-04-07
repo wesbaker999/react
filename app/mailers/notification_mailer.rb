@@ -21,7 +21,6 @@ class NotificationMailer < ActionMailer::Base
   def feature_signed_by_client(feature)
     @feature = feature
     recipients = feature.project.memberships.select{|m| m.developer?}.collect{|m| m.user.email}
-    return if recipients.empty?
     mail(:to => recipients,
          :subject => "[#{feature.project.name}] feature ##{feature.project_feature_id} \"#{feature.title}\" signed by client #{feature.client_signature.user.name}")
   end

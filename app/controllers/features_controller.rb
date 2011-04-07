@@ -107,7 +107,7 @@ class FeaturesController < ApplicationController
   def client_sign
     @feature.client_sign!(current_user)
     @feature.updated_by = current_user
-    NotificationMailer.feature_signed_by_client(@feature).deliver
+    NotificationMailer.feature_signed_by_client(@feature).deliver unless @project.memberships.select{|m| m.developer?}.empty?
     redirect_to project_feature_path(@project,@feature)
   end
 
