@@ -1,5 +1,5 @@
 <div id="feature_bar">
-<% form_tag project_features_path(@project), :id => "feature_bar_search", :method => :get, :remote => true do %>
+<%= form_tag project_features_path(@project), :id => "feature_bar_search", :method => :get, :remote => true do %>
   <div class="sort"><a class="<%=@sort%>"></a></div>
   <div class="search">
     <input type="text" name="q" id="q" value="" autocomplete="off" />

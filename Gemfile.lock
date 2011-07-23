@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/jnicklas/capybara.git
+  revision: 4fc07dbdc8146bb7ea6039779af6b0fef2196abb
+  specs:
+    capybara (1.0.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0.0)
+      xpath (~> 0.1.4)
+
+GIT
   remote: git://github.com/reactualize/react_reporter.git
   revision: 293e86f2e44a190a9ec3a7e5c67e5f0a686ce46a
   specs:
@@ -49,13 +61,6 @@ GEM
       xml-simple
       xml-simple
     builder (2.1.2)
-    capybara (1.0.0)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (~> 0.2.0)
-      xpath (~> 0.1.4)
     childprocess (0.2.0)
       ffi (~> 1.0.6)
     configuration (1.1.0)
@@ -134,7 +139,7 @@ GEM
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
     rubyzip (0.9.4)
-    selenium-webdriver (0.2.2)
+    selenium-webdriver (2.0.1)
       childprocess (>= 0.1.9)
       ffi (>= 1.0.7)
       json_pure
@@ -159,7 +164,7 @@ DEPENDENCIES
   acts_as_versioned
   authlogic
   aws-ses
-  capybara
+  capybara!
   cucumber
   cucumber-rails
   database_cleaner
