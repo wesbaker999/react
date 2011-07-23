@@ -9,4 +9,5 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 vendor/bundle
+vendor/cache
 features/reports
