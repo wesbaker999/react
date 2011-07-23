@@ -5,6 +5,7 @@ config/aws_secret_access_key.txt
 config/csrf_secret_token.txt
 config/initializers/react.rb
 .idea
+.bundle
 db/*.sqlite3
 log/*.log
 tmp/**/*
