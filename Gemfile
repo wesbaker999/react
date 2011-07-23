@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.9'
 gem 'mysql'
 gem 'unicorn'
 gem 'authlogic'
