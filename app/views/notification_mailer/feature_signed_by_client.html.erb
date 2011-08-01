@@ -1,3 +1,3 @@
-Feature #<%= @feature.project_feature_id %> "<%= @feature.title %>" has been signed by client <%= @feature.client_signature.user.name %>.
+<%= t "txt.notification_mailer.feature_has_been_signed", :project_feature_id => @feature.project_feature_id, :title => @feature.title, :client_name => @feature.client_signature.user.name %>.
 
-Click here to review the feature: <%= project_feature_url(@feature.project, @feature) %>
+<%= t "txt.notification_mailer.click_to_review" %>: <%= project_feature_url(@feature.project, @feature) %>

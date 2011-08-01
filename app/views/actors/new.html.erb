@@ -1,7 +1,7 @@
 <div class="inner">
-<h1>New Actor</h1>
+<h1><%= t "txt.actors.new_actor" %></h1>
 <%=form_for @actor, :url => project_actors_path(@project) do |f|%>
 <%=render :partial => "fields", :locals => {:f =>f}%>
-    <%=f.submit "Create", :class=> "button"%>
+    <%=f.submit t "txt.general.create", :class=> "button"%>
 <% end %>
 </div>

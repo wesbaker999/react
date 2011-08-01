@@ -6,13 +6,13 @@
   </div>
   <div class="actors">
     <select id="actor_id" name="actor_id">
-      <option value="0">ALL ACTORS</option>
+      <option value="0"><%= t "txt.actors.all_actors" %></option>
       <% @project.actors.alphabetical.each do |a|%>
       <option value="<%=a.id%>"<% if @actor_id == a.id%> selected="selected"<%end%>><%=a.name%></option>
       <% end %>
     </select>
   </div>
-  <div class="unsigned"><a class="<%=@unsigned%>">UNSIGNED (<%=@unsigned_count%>)</a></div>
+  <div class="unsigned"><a class="<%=@unsigned%>"><%= t "txt.features.unsigned" %> (<%=@unsigned_count%>)</a></div>
   <input type="hidden" name="sort" id="sort" value="<%=@sort%>"/>
   <input type="hidden" name="unsigned" id="unsigned" value="<%=@unsigned%>"/>
 <% end %>

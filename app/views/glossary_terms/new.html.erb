@@ -1,7 +1,7 @@
 <div class="inner">
-  <h1>New Term</h1>
+  <h1><%= t "txt.glossary.new_term" %></h1>
 <%=form_for @term, :url => project_glossary_terms_path(@project) do |f|%>
 <%=render :partial => "fields", :locals => {:f =>f}%>
-    <%=f.submit "Create", :class=>"button"%>
+    <%=f.submit t("txt.general.create"), :class=>"button"%>
 <% end %>
 </div>

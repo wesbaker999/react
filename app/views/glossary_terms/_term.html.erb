@@ -3,6 +3,6 @@
     <div class="name"><%=term.name%></div>
     <div class="definition"><%=term.definition%></div>
   </div>
-  <%= link_to "edit", edit_project_glossary_term_path(@project, term), :class => "edit_term" if @membership%>
+  <%= link_to t("txt.general.edit"), edit_project_glossary_term_path(@project, term), :class => "edit_term" if @membership%>
   <div style="clear:both;"></div>
 </li>

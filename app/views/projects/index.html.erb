@@ -1,5 +1,5 @@
 <%content_for(:sidebar) do -%>
-<a href="<%=new_project_path%>" class="button large action"><span>New Project</span></a>
+<a href="<%=new_project_path%>" class="button large action"><span><%= t "txt.projects.new_project" %></span></a>
 <% end -%>
 <ul id="projects">
   <%= render :partial => "project", :collection => @projects %>

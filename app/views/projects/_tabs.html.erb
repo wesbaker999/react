@@ -1,5 +1,5 @@
   <ul class="tabs">
-   <li><%=link_to "Glossary", project_glossary_terms_path(@project), :class=> (@tab=="terms" ? "active" : nil)%></li>
-        <li><%=link_to "Actors", project_actors_path(@project), :class=> (@tab=="actors" ? "active" : nil)%></li>
-    <%if @membership && @membership.admin?%><li><%=link_to "Settings", edit_project_path(@project), :class=> (@tab=="settings" ? "active" : nil)%></li><% end %>
+   <li><%=link_to t("txt.projects.glossary"), project_glossary_terms_path(@project), :class=> (@tab=="terms" ? "active" : nil)%></li>
+        <li><%=link_to t("txt.projects.actors"), project_actors_path(@project), :class=> (@tab=="actors" ? "active" : nil)%></li>
+    <%if @membership && @membership.admin?%><li><%=link_to t("txt.projects.settings"), edit_project_path(@project), :class=> (@tab=="settings" ? "active" : nil)%></li><% end %>
   </ul>

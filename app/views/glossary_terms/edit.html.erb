@@ -1,5 +1,5 @@
-<h1>Edit Term</h1>
+<h1><%= t "txt.glossary.edit_term" %></h1>
 <%=form_for @term, :url => project_glossary_term_path(@project, @term), :method=>:put, :remote => true do |f|%>
   <%=render :partial => "fields", :locals => {:f =>f}%>
-  <%=f.submit "Update", :class=> "button action"%> or <%=link_to "Cancel", "", :class=>"cancel"%>
+  <%=f.submit t "txt.general.update", :class=> "button action"%> or <%=link_to t("txt.general.cancel"), "", :class=>"cancel"%>
 <% end %>

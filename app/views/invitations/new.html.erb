@@ -1,26 +1,26 @@
 <div class="inner">
-<h1>Add Member</h1>
+<h1><%= t "txt.invitations.add_member" %></h1>
     <%= form_for @invitation, :url => project_invitations_path(@project) do |f| %>
       <%=errors_for @invitation %>
 <div class="field">
-<%=f.label :email%>
+<%=f.label :email, :value => t("txt.invitations.email") %>
 <%=f.text_field :email%>
 </div>
 <div class="field">
 <%=f.check_box :admin %>
-  <%=f.label :admin, "This member will be an administrator.", :style=>"display: inline"%>
+  <%=f.label :admin, :value => t("txt.invitations.will_be_admin"), :style=>"display: inline"%>
 
 </div>
 
       <div class="field">
 <%=f.check_box :developer %>
-        <%=f.label :developer, "This member is a developer.", :style=>"display: inline"%>
+        <%=f.label :developer, :value => t("txt.invitations.is_a_developer"), :style=>"display: inline"%>
 
 </div>
       <div class="field">
 <%=f.check_box :client %>
-        <%=f.label :client, "This member is a client.", :style=>"display: inline"%>
+        <%=f.label :client, :value => t("txt.invitations.is_a_client"), :style=>"display: inline"%>
 </div>
-<%=f.submit "Invite New Member", :class=> "button"%>
+<%=f.submit t("txt.invitations.invite_new_member"), :class=> "button"%>
       <% end %>
 </div>

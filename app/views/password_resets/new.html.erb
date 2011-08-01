@@ -1,10 +1,10 @@
 <div class="inner">
-<h1>Reset Password</h1>
+<h1><%= t "txt.password_resets.reset_password" %></h1>
 
-<p>Please enter your email address below and then press "Reset Password".</p>
+<p><%= t "txt.password_resets.enter_email_address" %></p>
 
 <% form_tag password_resets_path do %>
   <%= text_field_tag :email, nil, :style=> "margin: 1em 0"  %>
-  <%= submit_tag "Reset Password", :class=>"button", :style=>"display:block" %>
+  <%= submit_tag t("txt.password_resets.reset_password"), :class=>"button", :style=>"display:block" %>
 <% end %>
     </div>

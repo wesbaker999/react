@@ -1,9 +1,9 @@
 <%=errors_for @term if @term %>
 <div class="field">
-<%=f.label :name%>
+<%=f.label :name, :value => t("txt.glossary.name") %>
 <%=f.text_field :name%>
 </div>
 <div class="field">
-<%=f.label :definition%>
+<%=f.label :definition, :value => t("txt.glossary.definition") %>
 <%=f.text_area :definition%>
 </div>

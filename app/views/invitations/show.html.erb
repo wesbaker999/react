@@ -1,1 +1,1 @@
-<div class="inner"><%=button_to "Accept invitation to project: #{@invitation.project.name}", accept_invitation_path(@invitation), :class =>"button large", :method => :post%></div>
+<div class="inner"><%=button_to t("txt.invitations.accept_invitation", :project_name => @invitation.project.name), accept_invitation_path(@invitation), :class =>"button large", :method => :post%></div>

@@ -1,8 +1,8 @@
-<h1>Dashboard</h1>
+<h1><%= t "txt.dashboard.dashboard" %></h1>
 
-<%=link_to "New Project", new_project_path%>
+<%=link_to t("txt.dashboard.new_project"), new_project_path%>
 
-<h2>Projects</h2>
+<h2><%= t "txt.dashboard.projects" %></h2>
 
 <ul>
   <% current_user.projects.each do |project| %>

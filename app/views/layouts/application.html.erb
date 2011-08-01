@@ -39,18 +39,18 @@
 <ul class="nav">
 <%if current_user %>
 <li><%=link_to current_user.name, "/settings"%></li>
-<li class="last"><%=link_to "Sign out", "/signout"%></li>
+<li class="last"><%=link_to t("txt.nav.sign_out"), "/signout"%></li>
 <%else%>
-<li><%=link_to "Sign in", "/signin"%></li>
-<li class="last"><%=link_to "Sign up", "/signup"%></li>
+<li><%=link_to t("txt.nav.sign_in"), "/signin"%></li>
+<li class="last"><%=link_to t("txt.nav.sign_up"), "/signup"%></li>
 <%end%>
 </ul>
 <% if current_user%>
 <% if @project && @project.persisted?%>
-<% if @project && @membership && @membership.admin?%><%=link_to(image_tag("gear.png"), edit_project_path(@project), :title => "Project Settings", :class=>"project_settings")%><%end%>
-<a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span>ADD FEATURE</span></a>
+<% if @project && @membership && @membership.admin?%><%=link_to(image_tag("gear.png"), edit_project_path(@project), :title => t("txt.nav.project_settings"), :class=>"project_settings")%><%end%>
+<a href="<%=new_project_feature_path(@project)%>" class="button action" id="add_feature"><span><%= t "txt.nav.add_feature" %></span></a>
 <% elsif @projects %>
-<a href="<%=new_project_path%>" class="button action" id="add_project"><span>ADD PROJECT</span></a>
+<a href="<%=new_project_path%>" class="button action" id="add_project"><span><%= t "txt.nav.add_project" %></span></a>
 <%end%>
 <% end%>
 </div>
@@ -68,13 +68,13 @@
     <%= render :partial => "glossary_terms/term", :collection => @project.glossary_terms.alphabetical %>
     </ul>
     <%if @membership%>
-    <a class="button action" id="add_term_button"><span>ADD TERM</span></a>
+    <a class="button action" id="add_term_button"><span><%= t "txt.nav.add_term" %></span></a>
 
     <div id="add_term">
-      <h1>Add Term</h1>
+      <h1><%= t "txt.glossary.add_term" %></h1>
       <%=form_for :glossary_term, :url => project_glossary_terms_path(@project), :remote => true do |f|%>
         <%=render :partial => "glossary_terms/fields", :locals => {:f =>f}%>
-        <%=f.submit "Create", :class=>"button action"%> or <%=link_to "Cancel", "", :class=>"cancel"%>
+        <%=f.submit t("txt.general.create"), :class=>"button action"%> or <%=link_to t("txt.general.cancel"), "", :class=>"cancel"%>
       <% end %>
     </div>
     <div id="edit_term">

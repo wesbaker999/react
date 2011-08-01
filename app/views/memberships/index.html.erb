@@ -1,10 +1,10 @@
 <%content_for(:sidebar) do %>
-<a href="<%=new_project_invitation_path(@project)%>" class="button large action"><span>New Member</span></a>
+<a href="<%=new_project_invitation_path(@project)%>" class="button large action"><span><%= t "txt.memberships.new_member" %></span></a>
 <% end %>
 
 <div class="inner">
 
-    <h1>Memberships</h1>
+    <h1><%= t "txt.memberships.memberships" %></h1>
 
 
 
@@ -12,11 +12,11 @@
     <table>
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Admin?</th>
-        <th>Developer?</th>
-        <th>Client?</th>
+        <th><%= t "txt.memberships.name" %></th>
+        <th><%= t "txt.memberships.email" %></th>
+        <th><%= t "txt.memberships.is_admin" %></th>
+        <th><%= t "txt.memberships.is_developer" %></th>
+        <th><%= t "txt.memberships.is_client" %></th>
         <th></th>
       </tr>
       </thead>
@@ -28,24 +28,24 @@
             <td><%=membership.check_box :admin %><%=membership.hidden_field :id %></td>
             <td><%=membership.check_box :developer %></td>
             <td><%=membership.check_box :client %></td>
-            <td><%=link_to "Remove", project_membership_path(@project, membership.object), :method => :delete, :confirm => "Are you sure?" %></td>
+            <td><%=link_to t("txt.general.remove"), project_membership_path(@project, membership.object), :method => :delete, :confirm => t("txt.general.confirm") %></td>
           </tr>
     <% end %>
       </tbody>
     </table>
 
-  <%=f.submit "Save", :class => "button" %>
+  <%=f.submit t("txt.general.save"), :class => "button" %>
   <% end %>
 
-    <h1>Invitations</h1>
+    <h1><%= t "txt.memberships.invitations" %></h1>
     <div id="invitations">
     <table>
       <thead>
       <tr>
-        <th>Email</th>
-        <th>Admin?</th>
-        <th>Developer?</th>
-        <th>Client?</th>
+        <th><%= t "txt.memberships.email" %></th>
+        <th><%= t "txt.memberships.is_admin" %></th>
+        <th><%= t "txt.memberships.is_developer" %></th>
+        <th><%= t "txt.memberships.is_client" %></th>
         <th></th>
       </tr>
       </thead>
@@ -56,7 +56,7 @@
             <td><%=invitation.admin? %></td>
             <td><%=invitation.developer? %></td>
             <td><%=invitation.client? %></td>
-            <td><%=link_to "Remove", project_invitation_path(@project, invitation), :method => :delete, :confirm => "Are you sure?" %></td>
+            <td><%=link_to t("txt.general.remove"), project_invitation_path(@project, invitation), :method => :delete, :confirm => t("txt.general.confirm") %></td>
           </tr>
     <% end %>
       </tbody>

@@ -1,22 +1,20 @@
 <div class="inner">
-<h1>New Project</h1>
+<h1><%= t "txt.projects.new_project" %></h1>
 <%=form_for(@project) do |f|%>
 <%=errors_for @project %>
     <div class="field">
-   <%=f.label :name%>
+   <%=f.label :name, :value => t("txt.projects.name") %>
     <%=f.text_field :name %>
       </div>
-   <div class="field">
-     What is your role on the this project?
-   </div>
+   <div class="field"><%= t "txt.projects.what_is_your_role" %></div>
    <div class="field">
     <%=check_box_tag "client", "1" %>
-      <%=label_tag "client", "I am a client", :style=>"display: inline"%>
+      <%=label_tag "client", t("txt.projects.i_am_client"), :style=>"display: inline"%>
       </div>
       <div class="field">
     <%=check_box_tag "developer", "1" %>
-        <%=label_tag "developer", "I am a developer", :style=>"display: inline"%>
+        <%=label_tag "developer", t("txt.projects.i_am_developer"), :style=>"display: inline"%>
       </div>
-    <%=f.submit "Create", :class => "button" %>
+    <%=f.submit t("txt.general.create"), :class => "button" %>
 <% end %>
 </div>

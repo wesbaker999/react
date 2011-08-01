@@ -1,4 +1,4 @@
 $("#features").html("<%= escape_javascript(render(:partial => "feature", :collection => @features))%>");
 $("#feature_bar .sort a").removeClass("asc").removeClass("desc").addClass('<%=@sort%>');
 $("#feature_bar .unsigned a").removeClass("false").removeClass("true").addClass('<%=@unsigned%>');
-$("#feature_bar .unsigned a").html("UNSIGNED (<%=@unsigned_count%>)");
+$("#feature_bar .unsigned a").html("<%= t "txt.features.unsigned" %> (<%=@unsigned_count%>)");

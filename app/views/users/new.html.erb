@@ -1,27 +1,27 @@
 <div class="inner">
-<h1>Sign up</h1>
+<h1><%= t "txt.nav.sign_up" %></h1>
 <%=form_for @user do |f|%>
   <%=errors_for @user %>
       <div class="field">
-  <%=f.label :name%>
+  <%=f.label :name, :value => t("txt.settings.name") %>
   <%=f.text_field :name%>
         </div>
       <div class="field">
-  <%=f.label :email%>
+  <%=f.label :email, :value => t("txt.settings.email") %>
   <%=f.text_field :email%>
         </div>
       <div class="field">
-  <%=f.label :password %>
+  <%=f.label :password, :value => t("txt.settings.password") %>
   <%=f.password_field :password %>
         </div>
       <div class="field">
-  <%=f.label :password_confirmation %>
+  <%=f.label :password_confirmation, :value => t("txt.settings.password_confirmation") %>
   <%=f.password_field :password_confirmation %>
         </div>
             <div class="field">
-        <%=f.label :time_zone%>
+        <%=f.label :time_zone, :value => t("txt.settings.time_zone") %>
         <%=f.time_zone_select( :time_zone, ActiveSupport::TimeZone.us_zones, :default => "Eastern Time (US & Canada)")%>
       </div>
-  <%=f.submit "Sign up", :class => "button" %>
+  <%=f.submit t("txt.nav.sign_up"), :class => "button" %>
 <%end%>
 </div>

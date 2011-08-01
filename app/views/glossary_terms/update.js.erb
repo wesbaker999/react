@@ -2,5 +2,5 @@
 $("#glossary ul").html("<%= escape_javascript(render(:partial => "glossary_terms/term", :collection => @project.glossary_terms.alphabetical))%>");
 $("#edit_term").hide();
 <% else%>
-alert("Name and definition are required.");
+alert("<%= t "txt.glossary.name_definition_required" %>");
 <% end%>

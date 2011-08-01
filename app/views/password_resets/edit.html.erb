@@ -1,11 +1,11 @@
 <div class="inner">
-<h1>Update your password</h1>
+<h1><%= t "txt.password_resets.update_your_password" %></h1>
 
-<p>Please enter the new password below and then press "Update Password".</p>
+<p><%= t "txt.password_resets.enter_new_password" %></p>
 
 <% form_tag password_reset_path, :method => :put do %>
        <%=errors_for @user if @user %>
   <%= password_field_tag :password, nil, :style=> "margin: 1em 0" %>
-  <%= submit_tag "Update Password", :style=>"display:block" %>
+  <%= submit_tag t("txt.password_resets.update_password"), :style=>"display:block" %>
 <% end %>
     </div>

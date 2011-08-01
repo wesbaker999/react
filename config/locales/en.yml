@@ -3,3 +3,117 @@
 
 en:
   hello: "Hello world"
+  txt:
+    general:
+      confirm: Are you sure?
+      update: Update
+      create: Create
+      edit: Edit
+      delete: Delete
+      developer: Developer
+      client: Client
+      cancel: Cancel
+      remove: Remove
+      save: Save
+    nav:
+      sign_out: Sign out
+      sign_up: Sign up
+      sign_in: Sign in
+      project_settings: Project Settings
+      add_feature: ADD FEATURE
+      add_project: ADD PROJECT
+      add_term: ADD TERM
+      reset_password: Reset Password
+    actors:
+      add_actor: Add Actor
+      name: Name
+      delete_actor: Delete Actor
+      new_actor: New Actor
+      all_actors: ALL ACTORS
+    features:
+      delete_feature: Delete Feature
+      unsigned: UNSIGNED
+      add_feature: Add Feature
+      sign_off_developer: Sign off as Developer
+      sign_off_client: Sign off as Client
+      post_comment: Post Comment
+      title: Title
+    glossary:
+      name: Name
+      definition: Definition
+      name_definition_required: Name and definition are required.
+      edit_term: Edit Term
+      new_term: New Term
+      add_term: Add Term
+    invitation_mailer:
+      youve_been_invited: "You've been invited to join %{project_name} on REACT."
+      click_to_accept: Click here to accept
+    invitations:
+      add_member: Add Member
+      email: Email
+      will_be_admin: This member will be an administrator.
+      is_a_developer: This member is a developer.
+      is_a_client: This member is a client.
+      invite_new_member: Invite New Member
+      accept_invitation: "Accept invitation to project: %{project_name}"
+      invitations: Invitations
+    memberships:
+      new_member: New Member
+      memberships: Memberships
+      name: Name
+      email: Email
+      is_admin: Admin?
+      is_developer: Developer?
+      is_client: Client?
+      invitations: Invitations
+    notification_mailer:
+      feature_has_been_signed: "Feature %{project_feature_id} \"%{title}\" has been signed by client %{client_name}"
+      click_to_review: Click here to review the feature
+      feature_has_been_updated: "Feature %{project_feature_id} \"%{title}\" has been updated by %{updater_name}"
+      click_to_review_and_sign_off: Click here to review and sign off
+    password_reset_mailer:
+      instructions: REACT Password Reset Instructions
+      request_has_been_made: A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request, please follow the link below.
+      click_to_reset: Click this link to reset your password
+    password_resets:
+      update_your_password: Update your password
+      enter_new_password: Please enter the new password below and then press "Update Password".
+      update_password: Update Password
+      reset_password: Reset Password
+      enter_email_address: Please enter your email address below and then press "Reset Password".
+    projects:
+      glossary: Glossary
+      actors: Actors
+      settings: Settings
+      name: Name
+      public: Public
+      update_memberships: Update Memberships
+      add_member: Add Member
+      api_key: API Key
+      none: None
+      generate_api_key: Generate new API key
+      new_project: New Project
+      what_is_your_role: What is your role on the this project?
+      i_am_client: I am a client
+      i_am_developer: I am a developer
+    homepage:
+      rethinking_requirements: Rethinking Requirements
+      react_is: REACT is an easy to use software documentation tool that keeps clients and developers on the same page.
+      stop_passing: Stop passing around Word documents
+      passing_around_files: Passing around files is inefficient and lends itself to inconsistent formatting. REACT is a web application that's always available and distills the documentation process by focusing on Features, Actors and a Glossary of terms.
+      sign_on_the_line: Sign on the dotted line
+      adding_a_feature: Adding or changing a feature is a big deal. Any miscommunication about requirements can result in a significant loss of time and money. By requiring a signature on every feature, REACT ensures that both client and developer agree on what will be built.
+      documentation: Documentation is a constant process
+      react_connects: REACT connects your development process back to the documentation. We link test results directly to REACT features to show the client which features are passing or failing. The client can see progress in the context of the entire requirements specification.
+      effective_requirements: An effective requirements specification answers the question: “What does the software do?” REACT keeps the stakeholders engaged by requiring signatures on all requirements changes and revealing the development progress through test results.
+    dashboard:
+      dashboard: Dashboard
+      new_project: New Project
+      projects: Projects
+    settings:
+      settings: Settings
+      name: Name
+      email: Email
+      password: Password
+      password_confirmation: Password Confirmation
+      time_zone: Time Zone

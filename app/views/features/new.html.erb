@@ -1,7 +1,7 @@
 <div class="inner">
-<h1>Add Feature</h1>
+<h1><%= t "txt.features.add_feature" %></h1>
 <%=form_for @feature, :url => project_features_path(@project), :html => {"project-id" => @project.id} do |f|%>
 <%=render :partial => "fields", :locals => {:f =>f}%>
-<%=f.submit "Create", :class=>"button"%>
+<%=f.submit t "txt.general.create", :class=>"button"%>
 <% end %>
 </div>
