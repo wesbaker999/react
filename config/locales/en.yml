@@ -105,7 +105,7 @@ en:
       adding_a_feature: Adding or changing a feature is a big deal. Any miscommunication about requirements can result in a significant loss of time and money. By requiring a signature on every feature, REACT ensures that both client and developer agree on what will be built.
       documentation: Documentation is a constant process
       react_connects: REACT connects your development process back to the documentation. We link test results directly to REACT features to show the client which features are passing or failing. The client can see progress in the context of the entire requirements specification.
-      effective_requirements: An effective requirements specification answers the question: “What does the software do?” REACT keeps the stakeholders engaged by requiring signatures on all requirements changes and revealing the development progress through test results.
+      effective_requirements: "An effective requirements specification answers the question: \"What does the software do?\" REACT keeps the stakeholders engaged by requiring signatures on all requirements changes and revealing the development progress through test results."
     dashboard:
       dashboard: Dashboard
       new_project: New Project

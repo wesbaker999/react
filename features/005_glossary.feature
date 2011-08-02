@@ -24,7 +24,7 @@ Feature: "#5 Glossary"
       And I am on the projects page
     When I click "Blog"
       And I click element "#glossary_tab img"
-      And I click "edit" within "#glossary ul li:first-child"
+      And I click "Edit" within "#glossary ul li:first-child"
       And I fill in "glossary_term[definition]" with "The page where the posts are" within "#edit_term"
       And I press "Update"
     Then I should see "The page where the posts are" within "#glossary"
