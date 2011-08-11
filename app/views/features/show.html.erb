@@ -9,7 +9,7 @@
    <% end %>
 <h1>#<%=@feature.project_feature_id%>: <%=@feature.title%></h1>
 <div class="description">
-  <div class="as_a"><%= t("txt.features.as_a", :actor => @feature.actor.name) %> <%=link_to @feature.actor.name, project_features_path(@project,:actor_id => @feature.actor.id)%></div>
+  <div class="as_a"><%=link_to t("txt.features.as_a", :actor => @feature.actor.name), project_features_path(@project,:actor_id => @feature.actor.id)%></div>
   <%=simple_format(link_feature_terms(@feature))%>
 </div>
 

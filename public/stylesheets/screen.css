@@ -812,3 +812,7 @@ div.feature .term_container .tip{
     display: none;
     z-index: 1001;
 }
+
+.as_a a{
+    text-decoration: none;
+}
