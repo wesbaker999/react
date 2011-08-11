@@ -1,4 +1,4 @@
-Feature: "#6 Settings"
+Feature: "#8 Settings"
   As a User
   I want to edit my settings
   So I can change my site experience
