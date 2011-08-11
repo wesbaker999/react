@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def login_required
     unless current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = t("txt.nav.must_be_logged_in")
       redirect_to '/signin'
       return false
     end
@@ -52,14 +52,14 @@ class ApplicationController < ActionController::Base
 
   def require_membership
     unless @membership
-      flash[:notice] = "Membership required"
+      flash[:notice] = t("txt.nav.membership_required")
       redirect_to root_url
     end
   end
 
   def require_membership_admin
     unless @membership.admin?
-      flash[:notice] = "You must be an Administrator to access this page"
+      flash[:notice] = t("txt.nav.must_be_admin")
       redirect_to project_path(@project)
     end
   end

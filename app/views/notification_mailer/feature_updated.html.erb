@@ -1,6 +1,6 @@
 <%= t "txt.notification_mailer.feature_has_been_updated", :project_feature_id => @feature.project_feature_id, :title => @feature.title, :updater_name => @feature.updated_by.name %>:
 
-<%=@as_a_or_an%> <%=@feature.actor.name%>
+<%= t("txt.features.as_a", :actor => @feature.actor.name) %>
 <%=@feature.description%>
 
 ---

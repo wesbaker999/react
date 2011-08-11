@@ -49,7 +49,6 @@ class FeaturesController < ApplicationController
     else
       @unsigned_count = @project.features.unsigned.count
     end
-    @subtab = "Recent Activity"
     respond_to do |format|
       format.html {}
       format.js {}
@@ -64,7 +63,7 @@ class FeaturesController < ApplicationController
      @feature = @project.features.new(params[:feature])
      @feature.updated_by = current_user
      if @feature.save
-       flash[:notice] = "Feature created"
+       flash[:notice] = t("txt.features.feature_created")
        redirect_to project_feature_path(@project, @feature) and return
      end
      render :action => :new
@@ -79,7 +78,7 @@ class FeaturesController < ApplicationController
     @feature.num_tests = @feature.num_failures = 0
     @feature.updated_by = current_user
     if @feature.update_attributes(params[:feature])
-      flash[:notice] = "Feature updated"
+      flash[:notice] = t("txt.features.feature_updated")
       begin
         NotificationMailer.feature_updated(@feature).deliver
       rescue NoRecipientsError
@@ -113,7 +112,7 @@ class FeaturesController < ApplicationController
 
   def comment
     if @feature.comments.create(params[:comment].merge(:user => current_user))
-      flash[:notice] = "Comment created"
+      flash[:notice] = t("txt.features.comment_created")
       redirect_to project_feature_path(@project, @feature)
     else
       render :action => "show"

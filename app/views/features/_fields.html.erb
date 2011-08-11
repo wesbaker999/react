@@ -4,7 +4,7 @@
 <%=f.text_field :title%>
 </div>
 <div class="field">
-<%=f.label :actor, (@feature.actor ? as_a_or_an(@feature.actor.name) : "As a"), :style=>"margin-right: 5px; display:inline" %>
+<%=f.label :actor, t("txt.features.as_a", :actor => @feature.actor.try(:name)), :style=>"margin-right: 5px; display:inline" %>
 <%=f.select :actor_id, @project.actors.alphabetical.collect {|a| [ a.name, a.id ] } + [["----------",""],[t("txt.actors.add_actor"), "0"]], { :include_blank => true } %>
 <%= text_field_tag :feature_actor_name %>
 </div>

@@ -12,7 +12,7 @@ class GlossaryTermsController < ApplicationController
      respond_to do |format|
        format.html{
          if @term.save
-           flash[:notice] = "Term created"
+           flash[:notice] = t("txt.glossary.term_created")
            redirect_to project_glossary_term_path(@project, @term) and return
          end
          render :action => :new
@@ -31,7 +31,7 @@ class GlossaryTermsController < ApplicationController
     respond_to do |format|
       format.html {
         if @term.update_attributes(params[:glossary_term])
-          flash[:notice] = "Term updated"
+          flash[:notice] = t("txt.glossary.term_updated")
           redirect_to project_glossary_term_path(@project, @term) and return
         end
         render :action => :edit
@@ -59,7 +59,7 @@ class GlossaryTermsController < ApplicationController
     render_not_found and return unless @project
     @membership = @project.memberships.for_user(current_user).first
     if @project
-      @meta_title << "Glossary"
+      @meta_title << t("txt.glossary.glossary")
       @meta_title << @project.name
     end
   end

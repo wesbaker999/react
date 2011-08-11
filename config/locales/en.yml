@@ -24,12 +24,17 @@ en:
       add_project: ADD PROJECT
       add_term: ADD TERM
       reset_password: Reset Password
+      must_be_logged_in: You must be logged in to access this page
+      membership_required: Membership required
+      must_be_admin: You must be an Administrator to access this page
     actors:
       add_actor: Add Actor
       name: Name
       delete_actor: Delete Actor
       new_actor: New Actor
       all_actors: ALL ACTORS
+      actor_created: Actor created
+      actor_updated: Actor updated
     features:
       delete_feature: Delete Feature
       unsigned: UNSIGNED
@@ -38,6 +43,10 @@ en:
       sign_off_client: Sign off as Client
       post_comment: Post Comment
       title: Title
+      feature_created: Feature created
+      feature_updated: Feature updated
+      comment_created: Comment created
+      as_a: "As a %{actor}"
     glossary:
       name: Name
       definition: Definition
@@ -45,9 +54,13 @@ en:
       edit_term: Edit Term
       new_term: New Term
       add_term: Add Term
+      term_created: Term created
+      term_updated: Term updated
+      glossary: Glossary
     invitation_mailer:
       youve_been_invited: "You've been invited to join %{project_name} on REACT."
       click_to_accept: Click here to accept
+      invitation_subject: "You've been invited to join %{project_name} on REACT"
     invitations:
       add_member: Add Member
       email: Email
@@ -57,6 +70,11 @@ en:
       invite_new_member: Invite New Member
       accept_invitation: "Accept invitation to project: %{project_name}"
       invitations: Invitations
+      invitation_sent: "Invitation sent to %{email}"
+      invitation_removed: Invitation removed
+      invalid_code: Invalid invitation code
+      must_have_an_account: You must have an account and be logged in to accept this invitation
+      invalid_for_account: This invitation is invalid for this account
     memberships:
       new_member: New Member
       memberships: Memberships
@@ -66,21 +84,31 @@ en:
       is_developer: Developer?
       is_client: Client?
       invitations: Invitations
+      memberships_updated: Memberships updated
+      membership_created: Membership created
+      membership_updated: Membership updated
+      membership_removed: Membership removed
     notification_mailer:
       feature_has_been_signed: "Feature %{project_feature_id} \"%{title}\" has been signed by client %{client_name}"
       click_to_review: Click here to review the feature
       feature_has_been_updated: "Feature %{project_feature_id} \"%{title}\" has been updated by %{updater_name}"
       click_to_review_and_sign_off: Click here to review and sign off
+      feature_updated_subject: "[%{project_name}] feature #%{project_feature_id} \"%{title}\" updated by %{updater_name}"
+      feature_signed_subject: "[%{project_name}] feature #%{project_feature_id} \"%{title}\" signed by client %{client_name}"
     password_reset_mailer:
       instructions: REACT Password Reset Instructions
-      request_has_been_made: A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request, please follow the link below.
+      request_has_been_made: "A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request, please follow the link below."
       click_to_reset: Click this link to reset your password
     password_resets:
       update_your_password: Update your password
-      enter_new_password: Please enter the new password below and then press "Update Password".
+      enter_new_password: "Please enter the new password below and then press \"Update Password\"."
       update_password: Update Password
       reset_password: Reset Password
-      enter_email_address: Please enter your email address below and then press "Reset Password".
+      enter_email_address: "Please enter your email address below and then press \"Reset Password\"."
+      instructions_have_been_emailed: Instructions to reset your password have been emailed to you
+      no_user_was_found: "No user was found with email address %{email}"
+      password_updated: Your password was successfully updated
+      could_not_locate_account: We're sorry, but we could not locate your account
     projects:
       glossary: Glossary
       actors: Actors
@@ -96,6 +124,9 @@ en:
       what_is_your_role: What is your role on the this project?
       i_am_client: I am a client
       i_am_developer: I am a developer
+      project_created: Project created
+      project_updated: Project updated
+      api_key_generated: API key generated
     homepage:
       rethinking_requirements: Rethinking Requirements
       react_is: REACT is an easy to use software documentation tool that keeps clients and developers on the same page.
@@ -117,3 +148,5 @@ en:
       password: Password
       password_confirmation: Password Confirmation
       time_zone: Time Zone
+    users:
+      settings_saved: Settings saved

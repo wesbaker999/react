@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
      @project = Project.new(params[:project])
      if @project.save
        @project.memberships.create(:user =>current_user, :admin => true, :developer => (params[:developer] == "1" ? true : false), :client => (params[:client] == "1" ? true : false))
-       flash[:notice] = "Project created"
+       flash[:notice] = t("txt.projects.project_created")
        redirect_to project_path(@project) and return
      end
      render :action => :new
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(params[:project])
-      flash[:notice] = "Project updated"
+      flash[:notice] = t("txt.projects.project_updated")
       redirect_to edit_project_path(@project) and return
     end
     render :action => :edit
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
   def generate_api_key
     if @project.generate_api_key!
-      flash[:notice] = "API key generated"
+      flash[:notice] = t("txt.projects.api_key_generated")
       redirect_to edit_project_path(@project) and return
     end
     render :action => :edit

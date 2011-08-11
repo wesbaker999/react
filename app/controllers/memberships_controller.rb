@@ -7,7 +7,7 @@ class MembershipsController < ApplicationController
   def index
     if request.put?
       if @project.update_attributes(params[:project])
-        flash[:notice] = "Memberships updated"
+        flash[:notice] = t("txt.memberships.memberships_updated")
         redirect_to edit_project_path(@project) and return
       else
         render :action => "index"
@@ -22,7 +22,7 @@ class MembershipsController < ApplicationController
   def create
      @membership = @project.memberships.new(params[:membership])
      if @membership.save
-       flash[:notice] = "Membership created"
+       flash[:notice] = t("txt.memberships.membership_created")
        redirect_to project_membership_path(@project, @membership) and return
      end
      render :action => :new
@@ -34,7 +34,7 @@ class MembershipsController < ApplicationController
 
   def update
     if @membership.update_attributes(params[:membership])
-      flash[:notice] = "Membership updated"
+      flash[:notice] = t("txt.memberships.membership_updated")
       redirect_to project_membership_path(@project, @membership) and return
     end
     render :action => :edit
@@ -46,7 +46,7 @@ class MembershipsController < ApplicationController
 
   def destroy
     @membership.destroy
-    flash[:notice] = "Membership removed"
+    flash[:notice] = t("txt.memberships.membership_removed")
     redirect_to project_memberships_path(@project)
   end
 

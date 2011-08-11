@@ -4,6 +4,6 @@ class PasswordResetMailer < ActionMailer::Base
   def reset(user)
     @user = user
     mail(:to => @user.email,
-         :subject => "REACT Password Reset Instructions")
+         :subject => t("txt.password_reset_mailer.instructions"))
   end
 end

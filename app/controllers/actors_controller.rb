@@ -12,7 +12,7 @@ class ActorsController < ApplicationController
      respond_to do |format|
        format.html{
            if @actor.save
-             flash[:notice] = "Actor created"
+             flash[:notice] = t("txt.actors.actor_created")
              redirect_to project_actor_path(@project, @actor) and return
            end
            render :action => :new
@@ -29,7 +29,7 @@ class ActorsController < ApplicationController
 
   def update
     if @actor.update_attributes(params[:actor])
-      flash[:notice] = "Actor updated"
+      flash[:notice] = t("txt.actors.actor_updated")
       redirect_to project_actor_path(@project, @actor) and return
     end
     render :action => :edit

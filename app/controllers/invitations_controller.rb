@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
     if @invitation.id.blank?
       render :action => :new
     else
-      flash[:notice] = "Invitation sent to #{@invitation.email}"
+      flash[:notice] = t("txt.invitations.invitation_sent", :email => @invitation.email)
       InvitationMailer.invitation(@invitation).deliver
        redirect_to edit_project_path(@project)
     end
@@ -23,25 +23,25 @@ class InvitationsController < ApplicationController
 
   def destroy
     @invitation.destroy
-    flash[:notice] = "Invitation removed"
+    flash[:notice] = t("txt.invitations.invitation_removed")
     redirect_to edit_project_path(@project)
   end
 
   def show
     if @invitation.nil?
-      flash[:notice] = "Invalid invitation code"
+      flash[:notice] = t("txt.invitations.invalid_code")
       redirect_to '/signin'
       return false
     end
     unless current_user
       store_location
       session[:invitation] = @invitation
-      flash[:notice] = "You must have an account and be logged in to accept this invitation"
+      flash[:notice] = t("txt.invitations.must_have_an_account")
       redirect_to '/signin'
       return false
     end
     if current_user.email != @invitation.email
-      flash[:notice] = "This invitation is invalid for this account"
+      flash[:notice] = t("txt.invitations.invalid_for_account")
       redirect_to "/"
       session.delete(:invitation)
       return

@@ -4,6 +4,6 @@ class InvitationMailer < ActionMailer::Base
   def invitation(invitation)
     @invitation = invitation
     mail(:to => @invitation.email,
-         :subject => "You've been invited to join #{@invitation.project.name} on REACT")
+         :subject => t("txt.invitation_mailer.invitation_subject", :project_name => @invitation.project.name))
   end
 end
