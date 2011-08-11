@@ -61,6 +61,12 @@ GEM
       xml-simple
       xml-simple
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     childprocess (0.2.0)
       ffi (~> 1.0.6)
     configuration (1.1.0)
@@ -85,6 +91,7 @@ GEM
     gem_plugin (0.2.3)
     gherkin (2.3.5)
       json (>= 1.4.6)
+    highline (1.6.1)
     htmldiff (0.0.1)
     i18n (0.5.0)
     json (1.5.1)
@@ -102,6 +109,13 @@ GEM
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
     mysql (2.8.1)
+    net-scp (1.0.2)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.4)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nokogiri (1.5.0)
     polyglot (0.3.1)
     rack (1.2.3)
@@ -165,6 +179,7 @@ DEPENDENCIES
   acts_as_versioned
   authlogic
   aws-ses
+  capistrano
   capybara!
   cucumber
   cucumber-rails
