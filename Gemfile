@@ -10,6 +10,7 @@ gem 'htmldiff'
 gem 'aws-ses', :require => "aws/ses"
 gem 'nokogiri'
 gem 'react_reporter', :git => "git://github.com/reactualize/react_reporter.git"
+gem 'rake', '0.8.7'
 
 group :development, :test do
   gem 'rspec-rails'
