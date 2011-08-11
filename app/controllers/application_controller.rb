@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :login_required, :set_timezone
+  before_filter :login_required, :set_timezone, :set_locale
 
   helper_method :current_user_session, :current_user
 
@@ -46,9 +46,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   def render_not_found
+  def set_locale
+    I18n.locale = current_user.try(:locale) || I18n.default_locale
+  end
+
+  def render_not_found
     render :file => "public/404.html", :layout => false, :status => 404
-   end
+  end
 
   def require_membership
     unless @membership

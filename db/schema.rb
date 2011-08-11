@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327231209) do
+ActiveRecord::Schema.define(:version => 20110811035046) do
 
   create_table "actors", :force => true do |t|
     t.integer  "project_id"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20110327231209) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "time_zone"
+    t.string   "locale"
   end
 
 end

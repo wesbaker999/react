@@ -1,11 +1,20 @@
-Given /^(?:|I )am logged in$/ do
-  @user = Factory.create(:user)
+def log_in_as(user)
   @user.should be_valid
   visit "/signin"
   fill_in "user_session_email", :with => @user.email
   fill_in "user_session_password", :with => "password"
   click_button "Sign in"
   page.should have_content("Sign out")
+end
+
+Given /^(?:|I )am logged in$/ do
+  @user = Factory.create(:user)
+  log_in_as(@user)
+end
+
+Given /^(?:|I )am logged in as "([^"]+)"$/ do |name|
+  @user = Factory.create(:user, :name => name)
+  log_in_as(@user)
 end
 
 Given /^(?:|I )am not logged in$/ do
