@@ -61,7 +61,7 @@
   <div id="top_content"><%= content_for?(:content) ? yield(:content) : yield %></div>
   <div id="bottom_content"><%= yield(:bottom_content) %></div>
 <% if @project && @project.persisted?%>
-  <a id="glossary_tab"><img src="/images/glossary_tab.png"/></a>
+  <a id="glossary_tab"><%= t("txt.glossary.glossary") %></a>
 
   <div id="glossary">
     <ul>

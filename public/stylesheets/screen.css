@@ -767,16 +767,25 @@ ul.simple-list li a:hover{
   font-size: small;
 }
 
-#glossary_tab{
+a#glossary_tab{
     position: absolute;
     top: 40px;
     right: 0;
-    margin-right: -30px;
+    height: 30px;
+    width: 113px;
+    margin-right: -78px;
+    margin-top: 47px;
+    padding-left: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 30px;
     background: #333;
     color: #fff;
-    height: 113px;
-    width: 30px;
     cursor: pointer;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-border-radius:  0 10px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
 }
 
 #add_term, #edit_term {
