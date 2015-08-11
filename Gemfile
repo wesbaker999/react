@@ -20,7 +20,7 @@ group :development, :test do
 end
 
 group :test, :cucumber do
-  gem 'rcov'
+  gem 'simplecov'
   gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
   gem 'database_cleaner'
   gem 'cucumber'
